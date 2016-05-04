@@ -55,7 +55,7 @@ Wraps non-function variables in a simple return function.
 **Example** *(this)*  
 ```js
 constant(42);
-
+    
 ```
 **Example** *(returns this)*  
 ```js
