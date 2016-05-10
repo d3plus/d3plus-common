@@ -10,7 +10,7 @@ function(d) {
 }
 */
 export default function(key) {
-  return function constant(d) {
+  return function accessor(d) {
     return d[key];
   };
 }
