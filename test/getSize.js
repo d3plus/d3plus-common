@@ -7,6 +7,8 @@ test("getSize", (assert) => {
   let div = select("body").append("div"),
       size = getSize(div.node());
 
+  console.log(size[0], size[1]);
+
   assert.true(size[0] === 784 && size[1] === 562, "Window Detection");
 
   div = div.style("width", "300px").style("height", "200px").append("div");
