@@ -9,5 +9,5 @@ export default {
   globals: function(id) { return id.replace(/-/g, "_"); },
   moduleId: "d3plus-common",
   moduleName: "d3plus_common",
-  plugins: [json(), deps({"jsnext": true}), buble()]
+  plugins: [json(), deps({"jsnext": true}), buble({exclude: "node_modules/d3-*/**"})]
 };
