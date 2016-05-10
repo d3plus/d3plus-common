@@ -41,6 +41,61 @@ The source code is written using standard `import` and `export` statements. Crea
 ---
 
 # API Reference
+## Functions
+
+<dl>
+<dt><a href="#accessor">accessor(key)</a></dt>
+<dd><p>Wraps an object key in a simple accessor function.</p>
+</dd>
+<dt><a href="#colorNest">colorNest(raw, fill, [groupBy])</a></dt>
+<dd><p>Returns an Array of data objects based on a given color accessor and groupBy levels.</p>
+</dd>
+<dt><a href="#constant">constant(value)</a></dt>
+<dd><p>Wraps non-function variables in a simple return function.</p>
+</dd>
+<dt><a href="#getSize">getSize(elem)</a></dt>
+<dd><p>Finds the available width and height for a specified HTMLElement, traversing it&#39;s parents until it finds something with constrained dimensions. Falls back to the inner dimensions of the browser window if none is found.</p>
+</dd>
+<dt><a href="#merge">merge(objects)</a></dt>
+<dd><p>Combines an Array of Objects together and returns a new Object.</p>
+</dd>
+</dl>
+
+<a name="accessor"></a>
+
+## accessor(key)
+Wraps an object key in a simple accessor function.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>String</code> | The key to be returned from each Object passed to the function. |
+
+**Example** *(this)*  
+```js
+accessor("id");
+    
+```
+**Example** *(returns this)*  
+```js
+function(d) {
+  return d["id"];
+}
+```
+<a name="colorNest"></a>
+
+## colorNest(raw, fill, [groupBy])
+Returns an Array of data objects based on a given color accessor and groupBy levels.
+
+**Kind**: global function  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| raw | <code>Array</code> |  | The raw data Array to be grouped by color. |
+| fill | <code>function</code> |  | The color accessor for each data object. |
+| [groupBy] | <code>Array</code> | <code>[]</code> | An optional array of grouping accessors. Will autodetect if a certain group by level is assigning the colors, and will return the appropriate accessor. |
+
 <a name="constant"></a>
 
 ## constant(value)
@@ -62,4 +117,38 @@ constant(42);
 function() {
   return 42;
 }
+```
+<a name="getSize"></a>
+
+## getSize(elem)
+Finds the available width and height for a specified HTMLElement, traversing it's parents until it finds something with constrained dimensions. Falls back to the inner dimensions of the browser window if none is found.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| elem | <code>HTMLElement</code> | The HTMLElement to find dimensions for. |
+
+<a name="merge"></a>
+
+## merge(objects)
+Combines an Array of Objects together and returns a new Object.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| objects | <code>Array</code> | The Array of objects to be merged together. |
+
+**Example** *(this)*  
+```js
+merge([
+  {"id": "foo", "group": "A", "value": 10},
+  {"id": "bar", "group": "A", "value": 20}
+]);
+    
+```
+**Example** *(returns this)*  
+```js
+{"id": ["bar", "foo"], "group": "A", "value": 30}
 ```
