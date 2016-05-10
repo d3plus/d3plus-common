@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "d3-array": "^0.7.1",
-    "d3-collection": "^0.1.2"
+    "d3-collection": "^0.1.2",
+    "d3-selection": "^0.7.1"
   }
 }
