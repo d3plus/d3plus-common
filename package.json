@@ -50,5 +50,9 @@
     "serve": "static -p 4000",
     "test": "npm run lint && browserify -t [ babelify --presets [ es2015 ] ] test/*.js | tape-run --render='tap-spec'",
     "zip": "rm -f build/d3plus-common.zip && zip -j build/d3plus-common.zip -- LICENSE README.md build/d3plus-common.js build/d3plus-common.min.js build/d3plus-common.full.js build/d3plus-common.full.min.js"
+  },
+  "dependencies": {
+    "d3-array": "^0.7.1",
+    "d3-collection": "^0.1.2"
   }
 }
