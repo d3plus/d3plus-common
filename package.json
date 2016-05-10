@@ -1,6 +1,6 @@
 {
   "name": "d3plus-common",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Common functions and methods used across D3plus modules.",
   "main": "build/d3plus-common.js",
   "jsnext:main": "index",
