@@ -25,7 +25,7 @@ npm install d3plus-common
 In a vanilla environment, a `d3plus_common` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
 
 ```html
-<script src="https://d3plus.org/js/d3plus-common.v0.1.min.js"></script>
+<script src="https://d3plus.org/js/d3plus-common.v0.2.min.js"></script>
 ```
 
 Otherwise, [click here](https://github.com/d3plus/d3plus-common/releases/latest) to download the latest release.
