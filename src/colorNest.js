@@ -15,17 +15,19 @@ export default function(raw, fill, groupBy = []) {
 
   const colors = nest().key(fill).entries(raw);
   let data, id;
-  if (groupBy.length)
+  if (groupBy.length) {
+    const numColors = colors.length;
     for (let i = 0; i < groupBy.length; i++) {
       const ids = colors.map((c) => Array.from(new Set(c.values.map((d) => groupBy[i](d))))),
             total = sum(ids, (d) => d.length),
             uniques = new Set(merge(ids)).size;
-      if (total === colors.length && uniques === colors.length || i === groupBy.length - 1) {
+      if (total === numColors && uniques === numColors || i === groupBy.length - 1) {
         id = groupBy[i];
         data = nest().key(id).entries(raw).map((d) => combine(d.values));
         break;
       }
     }
+  }
   else {
     id = fill;
     data = colors.map((d) => combine(d.values));
