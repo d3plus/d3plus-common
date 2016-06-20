@@ -23,7 +23,7 @@ module.exports = function(opts = {}) {
   if (opts.deps) plugins.push(deps({"jsnext": true}));
   plugins.push(buble({"exclude": "node_modules/d3-*/**"}));
 
-  const entry = {"entry": "index.js", plugins};
+  const entry = {"entry": "index.js", plugins, "onwarn": () => {}};
   const config = {
     "dest": `build/${manifest.name}${opts.deps ? ".full" : ""}.js`,
     "format": "umd",
