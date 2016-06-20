@@ -18,7 +18,7 @@ rollup().then(() => {
   rollup({"deps": true}).then(() => {
     shell.exec(`uglifyjs build/${name}.js -c -m -o build/${name}.min.js`);
     shell.exec(`uglifyjs build/${name}.full.js -c -m -o build/${name}.full.min.js`);
-    shell.exec(`rm -f build/${name}.zip && zip -j build/${name}.zip -- LICENSE README.md build/${name}.js build/${name}.min.js build/${name}.full.js build/${name}.full.min.js`);
+    shell.exec(`rm -f build/${name}.zip && zip -j -q build/${name}.zip -- LICENSE README.md build/${name}.js build/${name}.min.js build/${name}.full.js build/${name}.full.min.js`);
     shell.exec(`git add * && git commit -m \"v${version}\" && git push`);
     shell.exec("npm publish ./");
     shell.exec("git push && git push --tags");
