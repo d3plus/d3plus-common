@@ -24,7 +24,7 @@ rollup().then(() => {
     shell.exec(`rm -f build/${name}.zip && zip -j -q build/${name}.zip -- LICENSE README.md build/${name}.js build/${name}.min.js build/${name}.full.js build/${name}.full.min.js`);
     shell.exec(`git add * && git commit -m \"v${version}\" && git push`);
     // shell.exec("npm publish ./");
-    shell.exec("git push --tags");
+    shell.exec(`git tag v${version} && git push --tags`);
     release(token, {
       "repo": name,
       "owner": "d3plus",
@@ -34,10 +34,10 @@ rollup().then(() => {
     }, (error) => {
       if (error) console.error(error.message);
     });
-    shell.cp(`build/${name}.js ../d3plus-website/js/${name}.v${minor}.js`);
-    shell.cp(`build/${name}.full.js ../d3plus-website/js/${name}.v${minor}.full.js`);
-    shell.cp(`build/${name}.min.js ../d3plus-website/js/${name}.v${minor}.min.js`);
-    shell.cp(`build/${name}.full.min.js ../d3plus-website/js/${name}.v${minor}.full.min.js`);
+    shell.cp(`build/${name}.js`, `../d3plus-website/js/${name}.v${minor}.js`);
+    shell.cp(`build/${name}.full.js`, `../d3plus-website/js/${name}.v${minor}.full.js`);
+    shell.cp(`build/${name}.min.js`, `../d3plus-website/js/${name}.v${minor}.min.js`);
+    shell.cp(`build/${name}.full.min.js`, `../d3plus-website/js/${name}.v${minor}.full.min.js`);
     shell.cd("../d3plus-website");
     shell.exec(`git add * && git commit -m \"${name} v${version}\" && git push && cd -`);
   });
