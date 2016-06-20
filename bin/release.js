@@ -12,7 +12,7 @@ minor = minor.slice(0, minor.length - 1).join(".");
 shell.exec("d3plus-test");
 shell.exec("d3plus-docs");
 
-const changelog = shell.exec("git log --pretty=format:'* %s (%h)' `git describe --tags --abbrev=0`...HEAD").stdout;
+const changelog = shell.exec("git log --pretty=format:'* %s (%h)' `git describe --tags --abbrev=0`...HEAD", {"silent": true}).stdout;
 
 rollup().then(() => {
   rollup({"deps": true}).then(() => {
