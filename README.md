@@ -5,7 +5,7 @@
 [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat-square)](https://david-dm.org/d3plus/d3plus-common)
 [![Dependency Status](http://img.shields.io/david/dev/d3plus/d3plus-common.svg?style=flat-square)](https://david-dm.org/d3plus/d3plus-common#info=devDependencies)
 
-A starter environment for D3plus modules.
+Common functions and methods used across D3plus modules.
 
 ## Installation Options
 
@@ -22,7 +22,7 @@ npm install d3plus-common
 
 <a name="install.browser"></a>
 ### Browser
-In a vanilla environment, a `d3plus_common` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
+In a vanilla environment, a `d3plus-common` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
 
 ```html
 <script src="https://d3plus.org/js/d3plus-common.v0.2.min.js"></script>
@@ -32,7 +32,7 @@ Otherwise, [click here](https://github.com/d3plus/d3plus-common/releases/latest)
 
 <a name="install.amd"></a>
 ### AMD and CommonJS
-The released bundle natively supports both AMD and CommonJS, and vanilla environments.
+The released bundle natively supports both AMD and CommonJS, in addition to vanilla environments.
 
 <a name="install.custom"></a>
 ### Custom Builds
