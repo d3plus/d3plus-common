@@ -1,5 +1,8 @@
 #! /usr/bin/env node
 
+// export GITHUB_TOKEN=xxx
+// git config --global credential.helper osxkeychain
+
 const release = require("grizzly"),
       rollup = require("./rollup"),
       shell = require("shelljs"),
@@ -20,8 +23,8 @@ rollup().then(() => {
     shell.exec(`uglifyjs build/${name}.full.js -c -m -o build/${name}.full.min.js`);
     shell.exec(`rm -f build/${name}.zip && zip -j -q build/${name}.zip -- LICENSE README.md build/${name}.js build/${name}.min.js build/${name}.full.js build/${name}.full.min.js`);
     shell.exec(`git add * && git commit -m \"v${version}\" && git push`);
-    shell.exec("npm publish ./");
-    shell.exec("git push && git push --tags");
+    // shell.exec("npm publish ./");
+    shell.exec("git push --tags");
     release(token, {
       "repo": name,
       "owner": "d3plus",
