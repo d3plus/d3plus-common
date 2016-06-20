@@ -12,7 +12,6 @@ new shell.ShellString(`# ${name}
 [![NPM Release](http://img.shields.io/npm/v/${name}.svg?style=flat-square)](https://www.npmjs.org/package/${name})
 [![Build Status](https://travis-ci.org/d3plus/${name}.svg?branch=master)](https://travis-ci.org/d3plus/${name})
 [![Dependency Status](http://img.shields.io/david/d3plus/${name}.svg?style=flat-square)](https://david-dm.org/d3plus/${name})
-[![Dependency Status](http://img.shields.io/david/dev/d3plus/${name}.svg?style=flat-square)](https://david-dm.org/d3plus/${name}#info=devDependencies)
 
 ${description}
 
