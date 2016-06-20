@@ -11,9 +11,9 @@ module.exports = function(opts = {}) {
   function output(e) {
     switch (e.code) {
       case "BUILD_START":
-        return console.log("bundling...");
+        return shell.echo("bundling...");
       case "BUILD_END":
-        return console.log(`bundled in ${e.duration}ms.${opts.watch ? " Watching for changes..." : ""}`);
+        return shell.echo(`bundled in ${e.duration}ms.${opts.watch ? " Watching for changes..." : ""}`);
       default:
         return undefined;
     }
