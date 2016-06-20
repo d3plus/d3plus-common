@@ -22,7 +22,7 @@ npm install d3plus-common
 
 <a name="install.browser"></a>
 ### Browser
-In a vanilla environment, a `d3plus-common` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
+In a vanilla environment, a `d3plus_common` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
 
 ```html
 <script src="https://d3plus.org/js/d3plus-common.v0.3.full.min.js"></script>
