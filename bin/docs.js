@@ -31,7 +31,7 @@ npm install ${name}
 
 <a name="install.browser"></a>
 ### Browser
-In a vanilla environment, a \`${name}\` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
+In a vanilla environment, a \`${name.replace(/-/g, "_")}\` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
 
 \`\`\`html
 <script src="https://d3plus.org/js/${name}.v${minor}.full.min.js"></script>
