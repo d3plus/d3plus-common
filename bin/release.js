@@ -21,12 +21,6 @@ rollup().then(() => {
     shell.exec(`git add * && git commit -m \"v${version}\" && git push`);
     shell.exec("npm publish ./");
     shell.exec("git push && git push --tags");
-    shell.cp(`build/${name}.js ../d3plus-website/js/${name}.v${minor}.js`);
-    shell.cp(`build/${name}.full.js ../d3plus-website/js/${name}.v${minor}.full.js`);
-    shell.cp(`build/${name}.min.js ../d3plus-website/js/${name}.v${minor}.min.js`);
-    shell.cp(`build/${name}.full.min.js ../d3plus-website/js/${name}.v${minor}.full.min.js`);
-    shell.cd("../d3plus-website");
-    shell.exec(`git add * && git commit -m \"${name} v${version}\" && git push && cd -`);
     release(token, {
       "repo": name,
       "owner": "d3plus",
@@ -36,5 +30,11 @@ rollup().then(() => {
     }, (error) => {
       if (error) console.error(error.message);
     });
+    shell.cp(`build/${name}.js ../d3plus-website/js/${name}.v${minor}.js`);
+    shell.cp(`build/${name}.full.js ../d3plus-website/js/${name}.v${minor}.full.js`);
+    shell.cp(`build/${name}.min.js ../d3plus-website/js/${name}.v${minor}.min.js`);
+    shell.cp(`build/${name}.full.min.js ../d3plus-website/js/${name}.v${minor}.full.min.js`);
+    shell.cd("../d3plus-website");
+    shell.exec(`git add * && git commit -m \"${name} v${version}\" && git push && cd -`);
   });
 });
