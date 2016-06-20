@@ -1,7 +1,6 @@
 #! /usr/bin/env node
 
-const changelog = shell.exec("git log --pretty=format:'* %s (%h)' `git describe --tags --abbrev=0`...HEAD").stdout,
-      release = require("grizzly"),
+const release = require("grizzly"),
       rollup = require("./rollup"),
       shell = require("shelljs"),
       token = shell.env.GITHUB_TOKEN,
@@ -12,6 +11,8 @@ minor = minor.slice(0, minor.length - 1).join(".");
 
 shell.exec("d3plus-test");
 shell.exec("d3plus-docs");
+
+const changelog = shell.exec("git log --pretty=format:'* %s (%h)' `git describe --tags --abbrev=0`...HEAD").stdout;
 
 rollup().then(() => {
   rollup({"deps": true}).then(() => {
