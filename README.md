@@ -43,7 +43,7 @@ The source code is written using standard `import` and `export` statements. Crea
 ## Functions
 
 <dl>
-<dt><a href="#accessor">accessor(key)</a></dt>
+<dt><a href="#accessor">accessor(key, [def])</a></dt>
 <dd><p>Wraps an object key in a simple accessor function.</p>
 </dd>
 <dt><a href="#colorNest">colorNest(raw, fill, [groupBy])</a></dt>
@@ -62,7 +62,7 @@ The source code is written using standard `import` and `export` statements. Crea
 
 <a name="accessor"></a>
 
-## accessor(key)
+## accessor(key, [def])
 Wraps an object key in a simple accessor function.
 
 **Kind**: global function  
@@ -70,6 +70,7 @@ Wraps an object key in a simple accessor function.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>String</code> | The key to be returned from each Object passed to the function. |
+| [def] | <code>\*</code> | A default value to be returned if the key is not present. |
 
 **Example** *(this)*  
 ```js
