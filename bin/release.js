@@ -22,7 +22,7 @@ rollup().then(() => {
     shell.exec(`uglifyjs build/${name}.full.js -c warnings=false -m -o build/${name}.full.min.js`);
     shell.exec(`rm -f build/${name}.zip && zip -j -q build/${name}.zip -- LICENSE README.md build/${name}.js build/${name}.min.js build/${name}.full.js build/${name}.full.min.js`);
     shell.exec("npm publish ./");
-    shell.exec("git add *");
+    shell.exec("git add package.json README.md");
     shell.exec(`git commit -m \"compiles v${version}\"`);
     shell.exec("git push -q");
     shell.exec(`git tag v${version}`);
@@ -41,7 +41,7 @@ rollup().then(() => {
     shell.cp(`build/${name}.min.js`, `../d3plus-website/js/${name}.v${minor}.min.js`);
     shell.cp(`build/${name}.full.min.js`, `../d3plus-website/js/${name}.v${minor}.full.min.js`);
     shell.cd("../d3plus-website");
-    shell.exec("git add *");
+    shell.exec(`git add js/${name}.v${minor}.js js/${name}.v${minor}.min.js js/${name}.v${minor}.full.js js/${name}.v${minor}.full.min.js`);
     shell.exec(`git commit -m \"${name} v${version}\"`);
     shell.exec("git push -q");
     shell.cd("-");
