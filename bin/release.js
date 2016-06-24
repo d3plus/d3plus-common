@@ -2,7 +2,8 @@
 // export GITHUB_TOKEN=xxx
 // git config --global credential.helper osxkeychain
 
-const release = require("grizzly"),
+const asset = require("putasset"),
+      release = require("grizzly"),
       rollup = require("./rollup"),
       shell = require("shelljs"),
       token = shell.env.GITHUB_TOKEN,
@@ -18,6 +19,7 @@ const changelog = shell.exec("git log --pretty=format:'* %s (%h)' `git describe 
 
 rollup().then(() => {
   rollup({deps: true}).then(() => {
+
     shell.exec(`uglifyjs build/${name}.js -c warnings=false -m -o build/${name}.min.js`);
     shell.exec(`uglifyjs build/${name}.full.js -c warnings=false -m -o build/${name}.full.min.js`);
     shell.exec(`rm -f build/${name}.zip && zip -j -q build/${name}.zip -- LICENSE README.md build/${name}.js build/${name}.min.js build/${name}.full.js build/${name}.full.min.js`);
@@ -27,6 +29,7 @@ rollup().then(() => {
     shell.exec("git push -q");
     shell.exec(`git tag v${version}`);
     shell.exec("git push -q --tags");
+
     release(token, {
       repo: name,
       owner: "d3plus",
@@ -34,8 +37,24 @@ rollup().then(() => {
       name: `v${version}`,
       body: changelog
     }, (error) => {
-      if (error) console.error(error.message);
+      if (error) shell.echo(error.message);
+      else {
+
+        shell.echo("release notes published");
+
+        asset(token, {
+          repo: name,
+          owner: "d3plus",
+          tag: `v${version}`,
+          filename: `build/${name}.zip`
+        }, (error) => {
+          if (error) shell.echo(error.message);
+          else shell.echo(`build/${name}.zip attached to release`);
+        });
+
+      }
     });
+
     shell.cp(`build/${name}.js`, `../d3plus-website/js/${name}.v${minor}.js`);
     shell.cp(`build/${name}.full.js`, `../d3plus-website/js/${name}.v${minor}.full.js`);
     shell.cp(`build/${name}.min.js`, `../d3plus-website/js/${name}.v${minor}.min.js`);
@@ -45,5 +64,6 @@ rollup().then(() => {
     shell.exec(`git commit -m \"${name} v${version}\"`);
     shell.exec("git push -q");
     shell.cd("-");
+
   });
 });
