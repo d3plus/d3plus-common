@@ -3,7 +3,7 @@ import {default as accessor} from "../src/accessor.js";
 
 test("accessor", (assert) => {
 
-  const obj = {"id": "test", "null": null, "zero": 0, "false": false};
+  const obj = {id: "test", null: null, zero: 0, false: false};
   assert.equals(accessor("id")(obj), "test", "String");
   assert.equals(accessor("null")(obj), null, "null");
   assert.equals(accessor("zero")(obj), 0, "0");

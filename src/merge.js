@@ -7,11 +7,11 @@ import {keys} from "d3-collection";
     @param {Array} objects The Array of objects to be merged together.
     @example <caption>this</caption>
 merge([
-  {"id": "foo", "group": "A", "value": 10},
-  {"id": "bar", "group": "A", "value": 20}
+  {id: "foo", group: "A", value: 10},
+  {id: "bar", group: "A", value: 20}
 ]);
     @example <caption>returns this</caption>
-{"id": ["bar", "foo"], "group": "A", "value": 30}
+{id: ["bar", "foo"], group: "A", value: 30}
 */
 export default function(objects) {
 

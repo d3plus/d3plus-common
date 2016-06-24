@@ -4,8 +4,8 @@ import {default as merge} from "../src/merge.js";
 test("merge", (assert) => {
 
   const obj = merge([
-    {"id": "foo", "group": "A", "value": 10},
-    {"id": "bar", "group": "A", "value": 20}
+    {id: "foo", group: "A", value: 10},
+    {id: "bar", group: "A", value: 20}
   ]);
 
   assert.equals(obj.group, "A", "Unique String");

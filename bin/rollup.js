@@ -20,16 +20,16 @@ module.exports = function(opts = {}) {
   }
 
   const plugins = [json()];
-  if (opts.deps) plugins.push(deps({"jsnext": true}));
-  plugins.push(buble({"exclude": "node_modules/d3-*/**"}));
+  if (opts.deps) plugins.push(deps({jsnext: true}));
+  plugins.push(buble({exclude: "node_modules/d3-*/**"}));
 
-  const entry = {"entry": "index.js", plugins, "onwarn": () => {}};
+  const entry = {entry: "index.js", plugins, onwarn: () => {}};
   const config = {
-    "dest": `build/${manifest.name}${opts.deps ? ".full" : ""}.js`,
-    "format": "umd",
-    "globals": (id) => id.replace(/-/g, "_"),
-    "moduleId": manifest.name,
-    "moduleName": manifest.name.replace(/-/g, "_")
+    dest: `build/${manifest.name}${opts.deps ? ".full" : ""}.js`,
+    format: "umd",
+    globals: (id) => id.replace(/-/g, "_"),
+    moduleId: manifest.name,
+    moduleName: manifest.name.replace(/-/g, "_")
   };
 
   shell.mkdir("-p", "build");

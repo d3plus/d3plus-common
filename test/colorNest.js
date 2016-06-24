@@ -4,9 +4,9 @@ import {default as colorNest} from "../src/colorNest.js";
 test("colorNest", (assert) => {
 
   const data = [
-    {"group": "A", "id": 1},
-    {"group": "B", "id": 2},
-    {"group": "A", "id": 3}
+    {group: "A", id: 1},
+    {group: "B", id: 2},
+    {group: "A", id: 3}
   ];
 
   const nestedUnique = colorNest(data, (d) => d.id);
