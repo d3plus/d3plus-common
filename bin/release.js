@@ -44,7 +44,7 @@ rollup().then(() => {
 
         asset(token, {
           repo: name,
-          owner: "d3plus",
+          user: "d3plus",
           tag: `v${version}`,
           filename: `build/${name}.zip`
         }, (error) => {
