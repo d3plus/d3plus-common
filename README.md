@@ -143,12 +143,12 @@ Combines an Array of Objects together and returns a new Object.
 **Example** *(this)*  
 ```js
 merge([
-  {"id": "foo", "group": "A", "value": 10},
-  {"id": "bar", "group": "A", "value": 20}
+  {id: "foo", group: "A", value: 10},
+  {id: "bar", group: "A", value: 20}
 ]);
     
 ```
 **Example** *(returns this)*  
 ```js
-{"id": ["bar", "foo"], "group": "A", "value": 30}
+{id: ["bar", "foo"], group: "A", value: 30}
 ```
