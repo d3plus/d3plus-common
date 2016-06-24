@@ -14,6 +14,8 @@ module.exports = function(opts = {}) {
         return shell.echo("bundling...");
       case "BUILD_END":
         return shell.echo(`bundled in ${e.duration}ms.${opts.watch ? " Watching for changes..." : ""}`);
+      case "ERROR":
+        return shell.echo(`bundle error in '${e.error.id}'`);
       default:
         return undefined;
     }
