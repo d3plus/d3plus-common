@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
-const {description, name, version} = JSON.parse(require("shelljs").cat("package.json"));
 const shell = require("shelljs");
+const {description, name, version} = JSON.parse(shell.cat("package.json"));
 
 let minor = version.split(".");
 minor = minor.slice(0, minor.length - 1).join(".");
@@ -30,7 +30,7 @@ npm install ${name}
 
 <a name="install.browser"></a>
 ### Browser
-In a vanilla environment, a \`${name.replace(/-/g, "_")}\` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
+In a vanilla environment, a \`d3plus\` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
 
 \`\`\`html
 <script src="https://d3plus.org/js/${name}.v${minor}.full.min.js"></script>

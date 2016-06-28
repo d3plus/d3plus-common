@@ -29,9 +29,8 @@ module.exports = function(opts = {}) {
   const config = {
     dest: `build/${manifest.name}${opts.deps ? ".full" : ""}.js`,
     format: "umd",
-    globals: (id) => id.replace(/-/g, "_"),
     moduleId: manifest.name,
-    moduleName: manifest.name.replace(/-/g, "_")
+    moduleName: "d3plus"
   };
 
   shell.mkdir("-p", "build");
