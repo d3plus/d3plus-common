@@ -10,12 +10,13 @@ const asset = require("putasset"),
       {name, version} = JSON.parse(shell.cat("package.json"));
 
 let minor = version.split(".");
+const prerelease = parseFloat(minor[0]) === 0;
 minor = minor.slice(0, minor.length - 1).join(".");
 
 shell.exec("d3plus-test");
 shell.exec("d3plus-docs");
 
-const changelog = shell.exec("git log --pretty=format:'* %s (%h)' `git describe --tags --abbrev=0`...HEAD", {silent: true}).stdout;
+const body = shell.exec("git log --pretty=format:'* %s (%h)' `git describe --tags --abbrev=0`...HEAD", {silent: true}).stdout;
 
 rollup().then(() => {
   rollup({deps: true}).then(() => {
@@ -32,10 +33,10 @@ rollup().then(() => {
 
     release(token, {
       repo: name,
-      owner: "d3plus",
-      tag_name: `v${version}`,
+      user: "d3plus",
+      tag: `v${version}`,
       name: `v${version}`,
-      body: changelog
+      body, prerelease
     }, (error) => {
       if (error) shell.echo(error.message);
       else {
