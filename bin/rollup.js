@@ -1,10 +1,10 @@
-const buble = require("rollup-plugin-buble"),
+const banner = require("./banner"),
+      buble = require("rollup-plugin-buble"),
       deps = require("rollup-plugin-node-resolve"),
-      json = require("rollup-plugin-json"),
-      manifest = JSON.parse(require("shelljs").cat("package.json")),
       rollup = require("rollup"),
       shell = require("shelljs"),
-      watch = require("rollup-watch");
+      watch = require("rollup-watch"),
+      {name} = JSON.parse(shell.cat("package.json"));
 
 module.exports = function(opts = {}) {
 
@@ -21,15 +21,16 @@ module.exports = function(opts = {}) {
     }
   }
 
-  const plugins = [json()];
+  const plugins = [];
   if (opts.deps) plugins.push(deps({jsnext: true}));
   plugins.push(buble({exclude: "node_modules/d3-*/**"}));
 
   const entry = {entry: "index.js", plugins, onwarn: () => {}};
   const config = {
-    dest: `build/${manifest.name}${opts.deps ? ".full" : ""}.js`,
+    banner,
+    dest: `build/${name}${opts.deps ? ".full" : ""}.js`,
     format: "umd",
-    moduleId: manifest.name,
+    moduleId: name,
     moduleName: "d3plus"
   };
 
