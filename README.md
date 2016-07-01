@@ -21,10 +21,10 @@ npm install d3plus-common
 
 <a name="install.browser"></a>
 ### Browser
-In a vanilla environment, a `d3plus_common` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
+In a vanilla environment, a `d3plus` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
 
 ```html
-<script src="https://d3plus.org/js/d3plus-common.v0.3.full.min.js"></script>
+<script src="https://d3plus.org/js/d3plus-common.v0.4.full.min.js"></script>
 ```
 
 Otherwise, [click here](https://github.com/d3plus/d3plus-common/releases/latest) to download the latest release.
@@ -57,6 +57,9 @@ The source code is written using standard `import` and `export` statements. Crea
 </dd>
 <dt><a href="#merge">merge(objects)</a></dt>
 <dd><p>Combines an Array of Objects together and returns a new Object.</p>
+</dd>
+<dt><a href="#stylize">stylize(The, An)</a></dt>
+<dd><p>Applies each key/value in an object as a style.</p>
 </dd>
 </dl>
 
@@ -152,3 +155,15 @@ merge([
 ```js
 {id: ["bar", "foo"], group: "A", value: 30}
 ```
+<a name="stylize"></a>
+
+## stylize(The, An)
+Applies each key/value in an object as a style.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| The | <code>D3selection</code> | D3 element to apply the styles to. |
+| An | <code>Object</code> | object of key/value style pairs. |
+
