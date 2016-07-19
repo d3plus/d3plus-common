@@ -62,7 +62,7 @@ ${examples}
 {{>main}}
 
 
-*Documentation generated on ${new Date().toUTCString()}*
+###### <sub>Documentation generated on ${new Date().toUTCString()}</sub>
 `;
 new shell.ShellString(contents).to(template);
 
