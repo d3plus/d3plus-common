@@ -2,7 +2,7 @@ import {test} from "tape";
 import {default as stylize} from "../src/stylize.js";
 import {select} from "d3-selection";
 
-test("stylize", (assert) => {
+test("stylize", assert => {
 
   const styles = {
     "color": "red",

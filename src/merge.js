@@ -15,13 +15,13 @@ merge([
 */
 export default function(objects) {
 
-  const availableKeys = new Set(merge(objects.map((o) => keys(o)))),
+  const availableKeys = new Set(merge(objects.map(o => keys(o)))),
         newObject = {};
 
-  availableKeys.forEach((k) => {
-    const values = objects.map((o) => o[k]);
+  availableKeys.forEach(k => {
+    const values = objects.map(o => o[k]);
     let value;
-    if (values.map((v) => typeof v).indexOf("string") >= 0) {
+    if (values.map(v => typeof v).indexOf("string") >= 0) {
       value = Array.from(new Set(values).values());
       if (value.length === 1) value = value[0];
     }

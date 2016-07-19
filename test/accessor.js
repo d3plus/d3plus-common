@@ -1,7 +1,7 @@
 import {test} from "tape";
 import {default as accessor} from "../src/accessor.js";
 
-test("accessor", (assert) => {
+test("accessor", assert => {
 
   const obj = {id: "test", null: null, zero: 0, false: false};
   assert.equals(accessor("id")(obj), "test", "String");

@@ -2,7 +2,7 @@ import {test} from "tape";
 import {select} from "d3-selection";
 import {default as getSize} from "../src/getSize.js";
 
-test("getSize", (assert) => {
+test("getSize", assert => {
 
   let div = select("body").append("div"),
       size = getSize(div.node());

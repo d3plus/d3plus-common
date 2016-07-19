@@ -1,7 +1,7 @@
 import {test} from "tape";
 import {default as merge} from "../src/merge.js";
 
-test("merge", (assert) => {
+test("merge", assert => {
 
   const obj = merge([
     {id: "foo", group: "A", value: 10},

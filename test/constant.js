@@ -1,7 +1,7 @@
 import {test} from "tape";
 import {default as constant} from "../src/constant.js";
 
-test("constant", (assert) => {
+test("constant", assert => {
 
   assert.equals(constant(42)(), 42, "Number");
   assert.equals(constant("value")(), "value", "String");
