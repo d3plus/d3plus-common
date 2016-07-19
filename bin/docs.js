@@ -66,5 +66,5 @@ ${examples}
 `;
 new shell.ShellString(contents).to(template);
 
-shell.exec(`jsdoc2md '+(bin|src)/**/*.js' --heading-depth 4 -t ${template} > README.md`);
+shell.exec(`jsdoc2md '+(bin|src)/**/*.js' --heading-depth 3 -t ${template} > README.md`);
 shell.echo("compiled README.md from JSDoc comments and examples");
