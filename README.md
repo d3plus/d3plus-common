@@ -6,40 +6,17 @@
 
 Common functions and methods used across D3plus modules.
 
-# Installation Options
+## Installing
 
-* [NPM](#install.npm)
-* [Browser](#install.browser)
-* [AMD and CommonJS](#install.amd)
-* [Custom Builds](#install.custom)
-
-<a name="install.npm"></a>
-### NPM
-```sh
-npm install d3plus-common
-```
-
-<a name="install.browser"></a>
-### Browser
-In a vanilla environment, a `d3plus` global is exported. To use a compiled version hosted on [d3plus.org](https://d3plus.org) that includes all dependencies:
+If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-common/releases/latest). The released bundle supports AMD, CommonJS, and vanilla environments. Create a [custom bundle using Rollup](https://github.com/rollup/rollup) or your preferred bundler. You can also load directly from [d3plus.org](https://d3plus.org):
 
 ```html
-<script src="https://d3plus.org/js/d3plus-common.v0.4.full.min.js"></script>
+<script src="https://d3plus.org/js/d3plus-common.v0.5.full.min.js"></script>
 ```
 
-Otherwise, [click here](https://github.com/d3plus/d3plus-common/releases/latest) to download the latest release.
 
-<a name="install.amd"></a>
-### AMD and CommonJS
-The released bundle natively supports both AMD and CommonJS, in addition to vanilla environments.
-
-<a name="install.custom"></a>
-### Custom Builds
-The source code is written using standard `import` and `export` statements. Create a custom build using [Rollup](https://github.com/rollup/rollup) or your preferred bundler. Take a look at the [index.js](https://github.com/d3plus/d3plus-common/blob/master/index.js) file to see the modules exported.
-
-
-# API Reference
-## Functions
+## API Reference
+#### Functions
 
 <dl>
 <dt><a href="#accessor">accessor(key, [def])</a></dt>
@@ -57,14 +34,14 @@ The source code is written using standard `import` and `export` statements. Crea
 <dt><a href="#merge">merge(objects)</a></dt>
 <dd><p>Combines an Array of Objects together and returns a new Object.</p>
 </dd>
-<dt><a href="#stylize">stylize(The, An)</a></dt>
+<dt><a href="#stylize">stylize(elem, styles)</a></dt>
 <dd><p>Applies each key/value in an object as a style.</p>
 </dd>
 </dl>
 
 <a name="accessor"></a>
 
-## accessor(key, [def])
+#### accessor(key, [def])
 Wraps an object key in a simple accessor function.
 
 **Kind**: global function  
@@ -87,7 +64,7 @@ function(d) {
 ```
 <a name="colorNest"></a>
 
-## colorNest(raw, fill, [groupBy])
+#### colorNest(raw, fill, [groupBy])
 Returns an Array of data objects based on a given color accessor and groupBy levels.
 
 **Kind**: global function  
@@ -100,7 +77,7 @@ Returns an Array of data objects based on a given color accessor and groupBy lev
 
 <a name="constant"></a>
 
-## constant(value)
+#### constant(value)
 Wraps non-function variables in a simple return function.
 
 **Kind**: global function  
@@ -122,7 +99,7 @@ function() {
 ```
 <a name="getSize"></a>
 
-## getSize(elem)
+#### getSize(elem)
 Finds the available width and height for a specified HTMLElement, traversing it's parents until it finds something with constrained dimensions. Falls back to the inner dimensions of the browser window if none is found.
 
 **Kind**: global function  
@@ -133,7 +110,7 @@ Finds the available width and height for a specified HTMLElement, traversing it'
 
 <a name="merge"></a>
 
-## merge(objects)
+#### merge(objects)
 Combines an Array of Objects together and returns a new Object.
 
 **Kind**: global function  
@@ -156,13 +133,16 @@ merge([
 ```
 <a name="stylize"></a>
 
-## stylize(The, An)
+#### stylize(elem, styles)
 Applies each key/value in an object as a style.
 
 **Kind**: global function  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| The | <code>D3selection</code> | D3 element to apply the styles to. |
-| An | <code>Object</code> | object of key/value style pairs. |
+| elem | <code>D3selection</code> | The D3 element to apply the styles to. |
+| styles | <code>Object</code> | An object of key/value style pairs. |
 
+
+
+*Documentation generated on Tue, 19 Jul 2016 17:12:12 GMT*
