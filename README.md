@@ -16,7 +16,7 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 
 
 ## API Reference
-#### Functions
+### Functions
 
 <dl>
 <dt><a href="#accessor">accessor(key, [def])</a></dt>
@@ -41,7 +41,7 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 
 <a name="accessor"></a>
 
-#### accessor(key, [def])
+### accessor(key, [def])
 Wraps an object key in a simple accessor function.
 
 **Kind**: global function  
@@ -64,7 +64,7 @@ function(d) {
 ```
 <a name="colorNest"></a>
 
-#### colorNest(raw, fill, [groupBy])
+### colorNest(raw, fill, [groupBy])
 Returns an Array of data objects based on a given color accessor and groupBy levels.
 
 **Kind**: global function  
@@ -77,7 +77,7 @@ Returns an Array of data objects based on a given color accessor and groupBy lev
 
 <a name="constant"></a>
 
-#### constant(value)
+### constant(value)
 Wraps non-function variables in a simple return function.
 
 **Kind**: global function  
@@ -99,7 +99,7 @@ function() {
 ```
 <a name="getSize"></a>
 
-#### getSize(elem)
+### getSize(elem)
 Finds the available width and height for a specified HTMLElement, traversing it's parents until it finds something with constrained dimensions. Falls back to the inner dimensions of the browser window if none is found.
 
 **Kind**: global function  
@@ -110,7 +110,7 @@ Finds the available width and height for a specified HTMLElement, traversing it'
 
 <a name="merge"></a>
 
-#### merge(objects)
+### merge(objects)
 Combines an Array of Objects together and returns a new Object.
 
 **Kind**: global function  
@@ -133,7 +133,7 @@ merge([
 ```
 <a name="stylize"></a>
 
-#### stylize(elem, styles)
+### stylize(elem, styles)
 Applies each key/value in an object as a style.
 
 **Kind**: global function  
@@ -145,4 +145,4 @@ Applies each key/value in an object as a style.
 
 
 
-*Documentation generated on Tue, 19 Jul 2016 17:12:12 GMT*
+###### <sub>Documentation generated on Tue, 19 Jul 2016 17:18:10 GMT</sub>
