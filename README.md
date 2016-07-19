@@ -6,7 +6,7 @@
 
 Common functions and methods used across D3plus modules.
 
-## Installation Options
+# Installation Options
 
 * [NPM](#install.npm)
 * [Browser](#install.browser)
@@ -37,7 +37,6 @@ The released bundle natively supports both AMD and CommonJS, in addition to vani
 ### Custom Builds
 The source code is written using standard `import` and `export` statements. Create a custom build using [Rollup](https://github.com/rollup/rollup) or your preferred bundler. Take a look at the [index.js](https://github.com/d3plus/d3plus-common/blob/master/index.js) file to see the modules exported.
 
----
 
 # API Reference
 ## Functions
