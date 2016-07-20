@@ -13,7 +13,15 @@ if (shell.test("-d", "example")) {
 
   shell.ls("example/*.md").forEach(file => {
     if (file.includes("getting-started.md")) {
-      header = `${shell.cat(file)}\n\n`;
+      const link = `https://d3plus.org/examples/${name}/getting-started/`;
+      header = `${shell.cat(file)}
+
+[Click here](${link}) to view this example live on the web.
+
+[![Getting Started](/example/getting-started.png)](${link})
+
+
+`;
       header = header.replace(/\n# |^# /g, "\n## ");
     }
     else {
