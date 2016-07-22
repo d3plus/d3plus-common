@@ -63,10 +63,21 @@ shell.ls("example/*.md").forEach(file => {
 
 });
 
+function getVar(contents, key, def = 0, num = true) {
+  const r = new RegExp(`\\[${key}\\]: ([0-9]+)`, "g").exec(contents);
+  return r ? num ? parseFloat(r[1], 10) : r[1] : def;
+}
+
 function ssPromise(file) {
 
-  const url = `http://localhost:${port}/${file}`;
-  return screenshot({url, width: 1, height: 1, page: true})
+  const contents = shell.cat(file.replace("html", "md")),
+        url = `http://localhost:${port}/${file}`;
+
+  const delay = getVar(contents, "delay", 1000),
+        height = getVar(contents, "height", 400),
+        width = getVar(contents, "width", 990);
+
+  return screenshot({url, width, height, delay, transparent: true})
     .then(img => new Promise(resolve => {
       fs.writeFile(file.replace("html", "png"), img.data, () => {
 
