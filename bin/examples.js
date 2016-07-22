@@ -11,58 +11,6 @@ const {name, version} = JSON.parse(shell.cat("package.json"));
 let minor = version.split(".");
 minor = minor.slice(0, minor.length - 1).join(".");
 
-function addSection(syntax, contents, space = "") {
-  const re = new RegExp(`\`\`\`${syntax}\\n((.|\\n)*?)\\n\`\`\``, "g");
-  const matches = [];
-  let match;
-  while ((match = re.exec(contents)) !== null) {
-    matches.push(match[1].replace(/\n/g, `\n${space}  `));
-  }
-  if (syntax === "css") {
-    matches.unshift(`body {
-${space}    margin: 0;
-${space}  }`);
-  }
-  if (matches.length) {
-    const body = matches.join(`\n\n${space}  `);
-    return `
-
-${space}  ${body}
-
-${space}`;
-  }
-  else return "";
-}
-
-const examples = [];
-shell.ls("example/*.md").forEach(file => {
-
-  const contents = shell.cat(file),
-        filename = file.replace("md", "html");
-
-  new shell.ShellString(`<!doctype html>
-<html>
-
-<head>
-
-  <meta charset="utf-8">
-  <script src="https://d3plus.org/js/${name}.v${minor}.full.min.js"></script>
-
-  <style>${addSection("css", contents, "  ")}</style>
-
-</head>
-
-<body>${addSection("html", contents)}</body>
-
-<script>${addSection("js", contents)}</script>
-
-</html>
-`).to(filename);
-
-  examples.push(filename);
-
-});
-
 function getVar(contents, key, def = 0, num = true) {
   const r = new RegExp(`\\[${key}\\]: ([0-9]+)`, "g").exec(contents);
   return r ? num ? parseFloat(r[1], 10) : r[1] : def;
@@ -103,22 +51,89 @@ title: ${title}
 
 }
 
-server.start({noBrowser: true, port}).on("listening", () => {
+function addSection(syntax, contents, space = "") {
+  const re = new RegExp(`\`\`\`${syntax}\\n((.|\\n)*?)\\n\`\`\``, "g");
+  const matches = [];
+  let match;
+  while ((match = re.exec(contents)) !== null) {
+    matches.push(match[1].replace(/\n/g, `\n${space}  `));
+  }
+  if (syntax === "css") {
+    matches.unshift(`body {
+${space}    margin: 0;
+${space}  }`);
+  }
+  if (matches.length) {
+    const body = matches.join(`\n\n${space}  `);
+    return `
 
-  shell.rm("-rf", `../d3plus-website/_examples/${name}`);
+${space}  ${body}
 
-  Promise.all(examples.map(ssPromise)).then(() => {
+${space}`;
+  }
+  else return "";
+}
 
-    screenshot.close();
+if (shell.test("-d", "example")) {
 
-    shell.cd("../d3plus-website");
-    shell.exec(`git add _examples/${name}/*`);
-    shell.exec(`git commit -m \"${name} examples\"`);
-    shell.exec("git push -q");
+  const examples = [];
+  shell.ls("example/*.md").forEach(file => {
 
-    shell.echo("successfully compiled and published examples");
-    server.shutdown();
+    const contents = shell.cat(file),
+          filename = file.replace("md", "html");
+
+    new shell.ShellString(`<!doctype html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <script src="https://d3plus.org/js/${name}.v${minor}.full.min.js"></script>
+
+  <style>${addSection("css", contents, "  ")}</style>
+
+</head>
+
+<body>${addSection("html", contents)}</body>
+
+<script>${addSection("js", contents)}</script>
+
+</html>
+`).to(filename);
+
+    examples.push(filename);
 
   });
 
-});
+  server.start({noBrowser: true, port}).on("listening", () => {
+
+    shell.rm("-rf", `../d3plus-website/_examples/${name}`);
+
+    Promise.all(examples.map(ssPromise)).then(() => {
+
+      screenshot.close();
+
+      shell.cd("../d3plus-website");
+      shell.exec(`git add _examples/${name}/*`);
+      shell.exec(`git commit -m \"${name} examples\"`);
+      shell.exec("git push -q");
+
+      shell.echo("successfully compiled and published examples");
+      server.shutdown();
+
+    });
+
+  });
+
+}
+else {
+
+  shell.rm("-rf", `../d3plus-website/_examples/${name}`);
+
+  shell.cd("../d3plus-website");
+  shell.exec(`git add _examples/${name}/*`);
+  shell.exec(`git commit -m \"${name} examples\"`);
+  shell.exec("git push -q");
+
+  shell.echo("no examples found matching 'example/*.md' in root");
+}
