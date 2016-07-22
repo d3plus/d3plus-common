@@ -41,6 +41,8 @@ function ssPromise(file) {
         title = title ? title[1] : "Example";
         new shell.ShellString(`---
 title: ${title}
+width: ${width}
+height: ${height}
 ---\n\n${mdc}`).to(newFile.replace(".html", "index.md"));
         shell.cp(file.replace("html", "png"), newFile.replace(".html", "thumb.png"));
 
