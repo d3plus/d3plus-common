@@ -51,9 +51,10 @@ if (shell.test("-d", "example")) {
 const template = `${shell.tempdir()}/README.hbs`;
 const contents = `# ${name}
 
-[![NPM Release](http://img.shields.io/npm/v/${name}.svg?style=flat-square)](https://www.npmjs.org/package/${name})
+[![NPM Release](http://img.shields.io/npm/v/${name}.svg?style=flat)](https://www.npmjs.org/package/${name})
 [![Build Status](https://travis-ci.org/d3plus/${name}.svg?branch=master)](https://travis-ci.org/d3plus/${name})
-[![Dependency Status](http://img.shields.io/david/d3plus/${name}.svg?style=flat-square)](https://david-dm.org/d3plus/${name})
+[![Dependency Status](http://img.shields.io/david/d3plus/${name}.svg?style=flat)](https://david-dm.org/d3plus/${name})
+[![Slack](https://img.shields.io/badge/Slack-Click%20to%20Join!-green.svg?style=social)](https://goo.gl/forms/ynrKdvusekAwRMPf2)
 
 ${description}
 
