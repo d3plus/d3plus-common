@@ -37,7 +37,7 @@ rollup().then(() => {
       tag: `v${version}`,
       name: `v${version}`,
       body, prerelease
-    }, (error) => {
+    }, error => {
       if (error) shell.echo(error.message);
       else {
 
@@ -48,7 +48,7 @@ rollup().then(() => {
           user: "d3plus",
           tag: `v${version}`,
           filename: `build/${name}.zip`
-        }, (error) => {
+        }, error => {
           if (error) shell.echo(error.message);
           else shell.echo(`build/${name}.zip attached to release`);
         });

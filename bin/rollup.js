@@ -37,6 +37,6 @@ module.exports = function(opts = {}) {
 
   shell.mkdir("-p", "build");
   if (opts.watch) return watch(rollup, Object.assign(entry, config)).on("event", output);
-  else return rollup.rollup(entry).then((bundle) => bundle.write(config));
+  else return rollup.rollup(entry).then(bundle => bundle.write(config));
 
 };
