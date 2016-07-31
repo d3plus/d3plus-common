@@ -3,7 +3,7 @@
 const shell = require("shelljs");
 
 shell.echo("running eslint");
-shell.exec("eslint --color index.js bin/* src/* test/*.js");
+shell.exec("eslint --color index.js bin/*.js src/*.js test/*.js");
 
 shell.echo("\nrunning tests");
 shell.exec("browserify -t [ babelify --presets [ es2015 ] ] test/*.js | tape-run --render='faucet'");
