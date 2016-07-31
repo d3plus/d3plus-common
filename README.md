@@ -1,8 +1,9 @@
 # d3plus-common
 
-[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat-square)](https://www.npmjs.org/package/d3plus-common)
+[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common)
 [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common)
-[![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat-square)](https://david-dm.org/d3plus/d3plus-common)
+[![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common)
+[![Slack](https://img.shields.io/badge/Slack-Click%20to%20Join!-green.svg?style=social)](https://goo.gl/forms/ynrKdvusekAwRMPf2)
 
 Common functions and methods used across D3plus modules.
 
@@ -145,4 +146,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Fri, 22 Jul 2016 16:21:12 GMT</sub>
+###### <sub>Documentation generated on Sun, 31 Jul 2016 16:40:36 GMT</sub>
