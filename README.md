@@ -17,6 +17,13 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 
 
 ## API Reference
+### Classes
+
+<dl>
+<dt><a href="#BaseClass">BaseClass</a></dt>
+<dd></dd>
+</dl>
+
 ### Functions
 
 <dl>
@@ -39,6 +46,31 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 <dd><p>Applies each key/value in an object as a style.</p>
 </dd>
 </dl>
+
+<a name="BaseClass"></a>
+
+### BaseClass
+**Kind**: global class  
+
+* [BaseClass](#BaseClass)
+    * [new BaseClass()](#new_BaseClass_new)
+    * [.config([*value*])](#BaseClass.config)
+
+<a name="new_BaseClass_new"></a>
+
+#### new BaseClass()
+An abstract class that contains some global methods and functionality.
+
+<a name="BaseClass.config"></a>
+
+#### BaseClass.config([*value*])
+If *value* is specified, sets the methods that correspond to the key/value pairs and returns this class. If *value* is not specified, returns the current configuration.
+
+**Kind**: static method of <code>[BaseClass](#BaseClass)</code>  
+
+| Param | Type |
+| --- | --- |
+| [*value*] | <code>Object</code> | 
 
 <a name="accessor"></a>
 
@@ -146,4 +178,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Sun, 31 Jul 2016 16:40:36 GMT</sub>
+###### <sub>Documentation generated on Thu, 04 Aug 2016 21:33:14 GMT</sub>
