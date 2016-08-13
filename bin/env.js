@@ -70,7 +70,7 @@ SOFTWARE.
 
 // labeling system inspired by
 // https://robinpowered.com/blog/best-practice-system-for-organizing-and-tagging-github-issues/
-let labels = [
+const labels = [
   {color: "#ee3f46", name: "bug"},
 
   {color: "#fef2c0", name: "chore"},
@@ -89,20 +89,7 @@ let labels = [
   {color: "#ededed", name: "invalid"},
   {color: "#ededed", name: "wontfix"},
   {color: "#ededed", name: "greenkeeper"}
-];
-
-labels = labels.map(l => ({name: l.name, color: l.color.substring(1)}));
-const labelKeys = labels.map(l => `${l.name}-${l.color}`);
+].map(l => ({name: l.name, color: l.color.substring(1)}));
 
 const issueSync = new LabelSync({}, "d3plus", name, token);
-
-issueSync.getLabels().then(curr => {
-  const currKeys = curr.map(l => `${l.name}-${l.color}`);
-  const newLabels = labels.filter(l => !currKeys.includes(`${l.name}-${l.color}`));
-  const oldLabels = curr.filter(l => !labelKeys.includes(`${l.name}-${l.color}`));
-  issueSync.deleteLabels(oldLabels).then(() => {
-    issueSync.createLabels(newLabels).then(() => {
-      shell.echo("issue labels synced");
-    });
-  });
-});
+issueSync.updateLabels(labels).then(() => shell.echo("issue labels synced"));
