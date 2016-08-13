@@ -46,7 +46,7 @@ install:
 shell.echo("creating LICENSE");
 new shell.ShellString(`The MIT License (MIT)
 
-Copyright (c) 2016 D3plus
+Copyright (c) ${new Date().getFullYear()} D3plus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
