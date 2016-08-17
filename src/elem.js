@@ -41,6 +41,9 @@ export default function(selector, p) {
 
   elem.exit().transition(p.transition).call(attrize, p.exit).remove();
 
-  return enter.merge(elem).transition(p.transition).call(attrize, p.update);
+  const update = enter.merge(elem);
+  update.transition(p.transition).call(attrize, p.update);
+
+  return update;
 
 }
