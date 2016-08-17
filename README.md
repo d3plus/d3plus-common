@@ -30,14 +30,14 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 <dt><a href="#accessor">accessor(key, [def])</a></dt>
 <dd><p>Wraps an object key in a simple accessor function.</p>
 </dd>
-<dt><a href="#colorNest">colorNest(raw, fill, [groupBy])</a></dt>
-<dd><p>Returns an Array of data objects based on a given color accessor and groupBy levels.</p>
+<dt><a href="#attrize">attrize(elem, attrs)</a></dt>
+<dd><p>Applies each key/value in an object as an attr.</p>
 </dd>
 <dt><a href="#constant">constant(value)</a></dt>
 <dd><p>Wraps non-function variables in a simple return function.</p>
 </dd>
-<dt><a href="#getSize">getSize(elem)</a></dt>
-<dd><p>Finds the available width and height for a specified HTMLElement, traversing it&#39;s parents until it finds something with constrained dimensions. Falls back to the inner dimensions of the browser window if none is found.</p>
+<dt><a href="#elem">elem(selector, params)</a></dt>
+<dd><p>Manages the enter/update/exit pattern for a single DOM element.</p>
 </dd>
 <dt><a href="#merge">merge(objects)</a></dt>
 <dd><p>Combines an Array of Objects together and returns a new Object.</p>
@@ -95,18 +95,17 @@ function(d) {
   return d["id"];
 }
 ```
-<a name="colorNest"></a>
+<a name="attrize"></a>
 
-### colorNest(raw, fill, [groupBy])
-Returns an Array of data objects based on a given color accessor and groupBy levels.
+### attrize(elem, attrs)
+Applies each key/value in an object as an attr.
 
 **Kind**: global function  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| raw | <code>Array</code> |  | The raw data Array to be grouped by color. |
-| fill | <code>function</code> |  | The color accessor for each data object. |
-| [groupBy] | <code>Array</code> | <code>[]</code> | An optional array of grouping accessors. Will autodetect if a certain group by level is assigning the colors, and will return the appropriate accessor. |
+| Param | Type | Description |
+| --- | --- | --- |
+| elem | <code>D3selection</code> | The D3 element to apply the styles to. |
+| attrs | <code>Object</code> | An object of key/value attr pairs. |
 
 <a name="constant"></a>
 
@@ -130,16 +129,23 @@ function() {
   return 42;
 }
 ```
-<a name="getSize"></a>
+<a name="elem"></a>
 
-### getSize(elem)
-Finds the available width and height for a specified HTMLElement, traversing it's parents until it finds something with constrained dimensions. Falls back to the inner dimensions of the browser window if none is found.
+### elem(selector, params)
+Manages the enter/update/exit pattern for a single DOM element.
 
 **Kind**: global function  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| elem | <code>HTMLElement</code> | The HTMLElement to find dimensions for. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| selector | <code>String</code> |  | A D3 selector, which must include the tagname and a class and/or ID. |
+| params | <code>Object</code> |  | Additional parameters. |
+| [params.condition] | <code>Boolean</code> | <code>true</code> | Whether or not the element should be rendered (or removed). |
+| [params.enter] | <code>Object</code> | <code>{}</code> | A collection of key/value pairs that map to attributes to be given on enter. |
+| [params.exit] | <code>Object</code> | <code>{}</code> | A collection of key/value pairs that map to attributes to be given on exit. |
+| [params.parent] | <code>D3Selection</code> | <code>d3.select(&quot;body&quot;)</code> | The parent element for this new element to be appended to. |
+| [params.transition] | <code>D3Transition</code> | <code>d3.transition().duration(0)</code> | The transition to use when animated the different life cycle stages. |
+| [params.update] | <code>Object</code> | <code>{}</code> | A collection of key/value pairs that map to attributes to be given on update. |
 
 <a name="merge"></a>
 
@@ -178,4 +184,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Thu, 04 Aug 2016 21:33:14 GMT</sub>
+###### <sub>Documentation generated on Wed, 17 Aug 2016 22:46:00 GMT</sub>
