@@ -9,16 +9,26 @@ minor = minor.slice(0, minor.length - 1).join(".");
 
 let addl = [], examples = "", header = false;
 
+function getVar(contents, key, def = 0, num = true) {
+  const r = new RegExp(`\\[${key}\\]: ([0-9]+)`, "g").exec(contents);
+  return r ? num ? parseFloat(r[1], 10) : r[1] : def;
+}
+
 if (shell.test("-d", "example")) {
 
   shell.ls("example/*.md").forEach(file => {
     if (file.includes("getting-started.md")) {
+
+      const contents = shell.cat(file),
+            height = getVar(contents, "height", 400),
+            width = getVar(contents, "width", 990);
+
       const link = `https://d3plus.org/examples/${name}/getting-started/`;
-      header = `${shell.cat(file)}
+      header = `${contents}
+
+[<kbd><img src="/example/getting-started.png" width="${width}px" height="${height}px" /></kbd>](${link})
 
 [Click here](${link}) to view this example live on the web.
-
-[![Getting Started](/example/getting-started.png)](${link})
 
 
 `;

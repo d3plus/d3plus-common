@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-const jimp = require("jimp"),
+const fs = require("fs"),
       port = 5000,
       screenshot = require("electron-screenshot-service"),
       server = require("live-server"),
@@ -27,35 +27,32 @@ function ssPromise(file) {
 
   return screenshot({url, width, height, delay, transparent: true})
     .then(img => new Promise(resolve => {
-      jimp.read(img.data, (err, png) => {
+      fs.writeFile(file.replace("html", "png"), img.data, err => {
         if (err) throw err;
-        png.resize(width, height)
-          .write(file.replace("html", "png"), () => {
 
+        const slug = file.split("/")[1].replace(".html", "");
+        const dir = `../d3plus-website/_examples/${name}/${slug}`;
+        shell.mkdir("-p", dir);
+        const newFile = file.replace(slug, "").replace("example", dir);
+        shell.cp(file, newFile.replace(".html", "embed.html"));
 
-            const slug = file.split("/")[1].replace(".html", "");
-            const dir = `../d3plus-website/_examples/${name}/${slug}`;
-            shell.mkdir("-p", dir);
-            const newFile = file.replace(slug, "").replace("example", dir);
-            shell.cp(file, newFile.replace(".html", "embed.html"));
-
-            const mdc = shell.cat(file.replace("html", "md"));
-            const re = new RegExp("# (.*?)\\n", "g");
-            let title = re.exec(mdc);
-            title = title ? title[1] : "Example";
-            new shell.ShellString(`---
+        const mdc = shell.cat(file.replace("html", "md"));
+        const re = new RegExp("# (.*?)\\n", "g");
+        let title = re.exec(mdc);
+        title = title ? title[1] : "Example";
+        new shell.ShellString(`---
 title: ${title}
 width: ${width}
 height: ${height}
 ---\n\n${mdc}`).to(newFile.replace(".html", "index.md"));
-            shell.cp(file.replace("html", "png"), newFile.replace(".html", "thumb.png"));
+        shell.cp(file.replace("html", "png"), newFile.replace(".html", "thumb.png"));
 
-            shell.echo(`compiled "${file.replace("html", "md")}"`);
+        shell.echo(`compiled "${file.replace("html", "md")}"`);
 
-            resolve(img);
+        resolve(img);
 
-          });
       });
+
     }));
 
 }
