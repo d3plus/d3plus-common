@@ -20,13 +20,12 @@ if (shell.test("-d", "example")) {
     if (file.includes("getting-started.md")) {
 
       const contents = shell.cat(file),
-            height = getVar(contents, "height", 400),
             width = getVar(contents, "width", 990);
 
       const link = `https://d3plus.org/examples/${name}/getting-started/`;
       header = `${contents}
 
-[<kbd><img src="/example/getting-started.png" width="${width}px" height="${height}px" /></kbd>](${link})
+[<kbd><img src="/example/getting-started.png" width="${width}px" /></kbd>](${link})
 
 [Click here](${link}) to view this example live on the web.
 
