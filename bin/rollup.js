@@ -32,7 +32,9 @@ module.exports = function(opts = {}) {
     dest: `build/${name}${opts.deps ? ".full" : ""}.js`,
     format: "umd",
     moduleId: name,
-    moduleName: "d3plus"
+    moduleName: "d3plus",
+    sourceMap: true,
+    sourceMapFile: `build/${name}${opts.deps ? ".full" : ""}.js`
   };
 
   shell.mkdir("-p", "build");
