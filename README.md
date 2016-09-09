@@ -33,13 +33,16 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 <dt><a href="#attrize">attrize(elem, attrs)</a></dt>
 <dd><p>Applies each key/value in an object as an attr.</p>
 </dd>
+<dt><a href="#closest">closest(n, arr)</a></dt>
+<dd><p>Finds the closest numeric value in an array.</p>
+</dd>
 <dt><a href="#constant">constant(value)</a></dt>
 <dd><p>Wraps non-function variables in a simple return function.</p>
 </dd>
 <dt><a href="#elem">elem(selector, params)</a></dt>
 <dd><p>Manages the enter/update/exit pattern for a single DOM element.</p>
 </dd>
-<dt><a href="#merge">merge(objects)</a></dt>
+<dt><a href="#merge">merge(objects, aggs)</a></dt>
 <dd><p>Combines an Array of Objects together and returns a new Object.</p>
 </dd>
 <dt><a href="#stylize">stylize(elem, styles)</a></dt>
@@ -107,6 +110,18 @@ Applies each key/value in an object as an attr.
 | elem | <code>D3selection</code> | The D3 element to apply the styles to. |
 | attrs | <code>Object</code> | An object of key/value attr pairs. |
 
+<a name="closest"></a>
+
+### closest(n, arr)
+Finds the closest numeric value in an array.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| n | <code>Number</code> | The number value to use when searching the array. |
+| arr | <code>Array</code> | The array of values to test against. |
+
 <a name="constant"></a>
 
 ### constant(value)
@@ -149,7 +164,7 @@ Manages the enter/update/exit pattern for a single DOM element.
 
 <a name="merge"></a>
 
-### merge(objects)
+### merge(objects, aggs)
 Combines an Array of Objects together and returns a new Object.
 
 **Kind**: global function  
@@ -157,6 +172,7 @@ Combines an Array of Objects together and returns a new Object.
 | Param | Type | Description |
 | --- | --- | --- |
 | objects | <code>Array</code> | The Array of objects to be merged together. |
+| aggs | <code>Object</code> | An object containing specific aggregation methods (functions) for each key type. By default, numbers are summed and strings are returned as an array of unique values. |
 
 **Example** *(this)*  
 ```js
@@ -184,4 +200,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Wed, 17 Aug 2016 23:06:18 GMT</sub>
+###### <sub>Documentation generated on Fri, 09 Sep 2016 17:15:23 GMT</sub>
