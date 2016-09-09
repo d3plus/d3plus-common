@@ -45,6 +45,9 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 <dt><a href="#merge">merge(objects, aggs)</a></dt>
 <dd><p>Combines an Array of Objects together and returns a new Object.</p>
 </dd>
+<dt><a href="#prefix">prefix()</a></dt>
+<dd><p>Returns the appropriate CSS vendor prefix, given the current browser.</p>
+</dd>
 <dt><a href="#stylize">stylize(elem, styles)</a></dt>
 <dd><p>Applies each key/value in an object as a style.</p>
 </dd>
@@ -186,6 +189,12 @@ merge([
 ```js
 {id: ["bar", "foo"], group: "A", value: 30}
 ```
+<a name="prefix"></a>
+
+### prefix()
+Returns the appropriate CSS vendor prefix, given the current browser.
+
+**Kind**: global function  
 <a name="stylize"></a>
 
 ### stylize(elem, styles)
@@ -200,4 +209,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Fri, 09 Sep 2016 17:42:57 GMT</sub>
+###### <sub>Documentation generated on Fri, 09 Sep 2016 22:25:31 GMT</sub>
