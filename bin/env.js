@@ -22,8 +22,11 @@ test/*.png
 
 shell.echo("creating .npmignore");
 new shell.ShellString(`build/*.zip
-example/*.html
+example/
 test/
+.eslintrc
+.gitignore
+.travis.yml
 `).to(".npmignore");
 
 shell.echo("creating .travis.yml");
