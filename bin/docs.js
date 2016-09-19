@@ -7,7 +7,7 @@ let minor = version.split(".");
 minor = minor.slice(0, minor.length - 1).join(".");
 
 
-let addl = [], examples = "", header = false;
+let examples = "";
 
 function getVar(contents, key, def = 0, num = true) {
   const r = new RegExp(`\\[${key}\\]: ([0-9]+)`, "g").exec(contents);
@@ -16,14 +16,15 @@ function getVar(contents, key, def = 0, num = true) {
 
 if (shell.test("-d", "example")) {
 
-  shell.ls("example/*.md").forEach(file => {
-    if (file.includes("getting-started.md")) {
+  let header = false;
 
-      const contents = shell.cat(file),
-            width = getVar(contents, "width", 990);
+  if (shell.test("-f", "example/getting-started.md")) {
 
-      const link = `https://d3plus.org/examples/${name}/getting-started/`;
-      header = `${contents}
+    const contents = shell.cat("example/getting-started.md"),
+          width = getVar(contents, "width", 990);
+
+    const link = `https://d3plus.org/examples/${name}/getting-started/`;
+    header = `${contents}
 
 [<kbd><img src="/example/getting-started.png" width="${width}px" /></kbd>](${link})
 
@@ -31,29 +32,28 @@ if (shell.test("-d", "example")) {
 
 
 `;
-      header = header.replace(/\n# |^# /g, "\n## ");
-    }
-    else {
-      const re = new RegExp("# (.*?)\\n", "g");
-      const title = re.exec(shell.cat(file));
-      const newFile = file.replace("example", `examples/${name}`).replace(".md", "/");
-      if (title) addl.push(` * [${title[1]}](http://d3plus.org/${newFile})`);
-    }
-  });
-
-  if (!header && addl.length) header = "## Examples\n\n";
-  else if (addl.length) header = `${header}### More Examples\n\n`;
-
-  if (header) {
-
-    if (addl.length) {
-      addl.push("");
-      addl = addl.join("\n");
-    }
-    else addl = "";
-    examples = `${header}\n${addl}\n`;
+    header = header.replace(/\n# |^# /g, "\n## ");
 
   }
+
+  const now = new Date().getTime(), week = 1000 * 60 * 60 * 24 * 7;
+  const addl = shell.ls("-l", "example/*.md")
+    .filter(f => !f.name.includes("getting-started.md"))
+    .sort((a, b) => b.birthtime - a.birthtime)
+    .map(file => {
+      const re = new RegExp("# (.*?)\\n", "g");
+      const h1 = re.exec(shell.cat(file.name));
+      const title = h1 ? h1[1] : file.name.replace("example/", "").replace(".md", "");
+      const url = `http://d3plus.org/${file.name.replace("example", `examples/${name}`).replace(".md", "/")}`;
+      const suffix = now - file.ctime < week ? "<sup> ***New***</sup>"
+                   : now - file.mtime < week ? "<sup> ***Updated***</sup>" : "";
+      return ` * [${title}](${url})${suffix}`;
+    });
+
+  if (!header && addl.length) header = "## Examples\n";
+  else if (addl.length) header = `${header}### More Examples\n`;
+
+  if (header) examples = `${header}\n${addl.join("\n")}\n`;
 
 }
 
