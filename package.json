@@ -22,6 +22,7 @@
     "url": "http://www.dave-landry.com"
   },
   "bin": {
+    "d3plus-build": "bin/build.js",
     "d3plus-dev": "bin/dev.js",
     "d3plus-docs": "bin/docs.js",
     "d3plus-env": "bin/env.js",
@@ -30,6 +31,7 @@
     "d3plus-test": "bin/test.js"
   },
   "scripts": {
+    "build": "d3plus-build",
     "dev": "d3plus-dev",
     "docs": "d3plus-docs",
     "env": "d3plus-env",
