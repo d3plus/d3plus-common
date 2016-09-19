@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 const fs = require("fs"),
-      port = 5000,
+      port = 4000,
       screenshot = require("electron-screenshot-service"),
       server = require("live-server"),
       shell = require("shelljs");
@@ -34,7 +34,11 @@ function ssPromise(file) {
         const dir = `../d3plus-website/_examples/${name}/${slug}`;
         shell.mkdir("-p", dir);
         const newFile = file.replace(slug, "").replace("example", dir);
-        shell.cp(file, newFile.replace(".html", "embed.html"));
+
+        new shell.ShellString(shell.cat(file)
+          .replace("../build", "https://d3plus.org/js")
+          .replace("full.min.js", `v${minor}.full.min.js`))
+          .to(newFile.replace(".html", "embed.html"));
 
         const mdc = shell.cat(file.replace("html", "md"));
         const re = new RegExp("# (.*?)\\n", "g");
@@ -94,7 +98,7 @@ if (shell.test("-d", "example")) {
 <head>
 
   <meta charset="utf-8">
-  <script src="https://d3plus.org/js/${name}.v${minor}.full.min.js"></script>
+  <script src="../build/${name}.full.min.js"></script>
 
   <style>${addSection("css", contents, "  ")}</style>
 
