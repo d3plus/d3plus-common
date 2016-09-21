@@ -23,14 +23,13 @@ rollup().then(() => {
     shell.exec(`rm -f build/${name}.zip && zip -j -q build/${name}.zip -- LICENSE README.md build/${name}.js build/${name}.min.js build/${name}.full.js build/${name}.full.min.js`);
     shell.exec("d3plus-examples");
     shell.exec("d3plus-docs");
+    const body = shell.exec("git log --pretty=format:'* %s (%h)' `git describe --tags --abbrev=0`...HEAD", {silent: true}).stdout;
     shell.exec("npm publish ./");
     shell.exec("git add package.json README.md");
     shell.exec(`git commit -m \"compiles v${version}\"`);
     shell.exec("git push -q");
     shell.exec(`git tag v${version}`);
     shell.exec("git push -q --tags");
-
-    const body = shell.exec("git log --pretty=format:'* %s (%h)' `git describe --tags --abbrev=0`...HEAD", {silent: true}).stdout;
 
     release(token, {
       repo: name,
