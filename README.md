@@ -180,14 +180,14 @@ Combines an Array of Objects together and returns a new Object.
 **Example** *(this)*  
 ```js
 merge([
-  {id: "foo", group: "A", value: 10},
-  {id: "bar", group: "A", value: 20}
+  {id: "foo", group: "A", value: 10, links: [1, 2]},
+  {id: "bar", group: "A", value: 20, links: [1, 3]}
 ]);
     
 ```
 **Example** *(returns this)*  
 ```js
-{id: ["bar", "foo"], group: "A", value: 30}
+{id: ["bar", "foo"], group: "A", value: 30, links: [1, 2, 3]}
 ```
 <a name="prefix"></a>
 
@@ -209,4 +209,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Wed, 21 Sep 2016 22:33:16 GMT</sub>
+###### <sub>Documentation generated on Thu, 29 Sep 2016 21:53:35 GMT</sub>
