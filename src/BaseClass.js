@@ -4,6 +4,11 @@
 */
 export default class BaseClass {
 
+  /**
+      @memberof BaseClass
+      @desc Invoked when creating a new class instance, and sets any default parameters.
+      @private
+  */
   constructor() {
 
     function s() {
