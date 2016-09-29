@@ -8,11 +8,11 @@ import {keys} from "d3-collection";
     @param {Object} aggs An object containing specific aggregation methods (functions) for each key type. By default, numbers are summed and strings are returned as an array of unique values.
     @example <caption>this</caption>
 merge([
-  {id: "foo", group: "A", value: 10},
-  {id: "bar", group: "A", value: 20}
+  {id: "foo", group: "A", value: 10, links: [1, 2]},
+  {id: "bar", group: "A", value: 20, links: [1, 3]}
 ]);
     @example <caption>returns this</caption>
-{id: ["bar", "foo"], group: "A", value: 30}
+{id: ["bar", "foo"], group: "A", value: 30, links: [1, 2, 3]}
 */
 export default function(objects, aggs = {}) {
 
@@ -23,11 +23,19 @@ export default function(objects, aggs = {}) {
     const values = objects.map(o => o[k]);
     let value;
     if (aggs[k]) value = aggs[k](values);
-    else if (values.map(v => typeof v).indexOf("string") >= 0) {
-      value = Array.from(new Set(values));
-      if (value.length === 1) value = value[0];
+    else {
+      const types = values.map(v => v.constructor);
+      if (types.indexOf(Array) >= 0) {
+        value = merge(values.map(v => v.constructor === Array ? v : [v]));
+        value = Array.from(new Set(value));
+        if (value.length === 1) value = value[0];
+      }
+      else if (types.indexOf(String) >= 0) {
+        value = Array.from(new Set(values));
+        if (value.length === 1) value = value[0];
+      }
+      else value = sum(values);
     }
-    else value = sum(values);
     newObject[k] = value;
   });
 
