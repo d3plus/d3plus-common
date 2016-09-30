@@ -24,8 +24,9 @@ export default function(objects, aggs = {}) {
     let value;
     if (aggs[k]) value = aggs[k](values);
     else {
-      const types = values.map(v => v.constructor);
-      if (types.indexOf(Array) >= 0) {
+      const types = values.map(v => v ? v.constructor : v).filter(v => v !== void 0);
+      if (!types.length) value = undefined;
+      else if (types.indexOf(Array) >= 0) {
         value = merge(values.map(v => v.constructor === Array ? v : [v]));
         value = Array.from(new Set(value));
         if (value.length === 1) value = value[0];
@@ -34,7 +35,12 @@ export default function(objects, aggs = {}) {
         value = Array.from(new Set(values));
         if (value.length === 1) value = value[0];
       }
-      else value = sum(values);
+      else if (types.indexOf(Number) >= 0) value = sum(values);
+      else {
+        console.log(k, types, values);
+        value = Array.from(new Set(values.filter(v => v !== void 0)));
+        if (value.length === 1) value = value[0];
+      }
     }
     newObject[k] = value;
   });
