@@ -3,15 +3,6 @@ import {transition} from "d3-transition";
 
 import {default as attrize} from "./attrize";
 
-const defaultParams = {
-  condition: true,
-  enter: {},
-  exit: {},
-  parent: select("body"),
-  transition: transition().duration(0),
-  update: {}
-};
-
 /**
     @function elem
     @desc Manages the enter/update/exit pattern for a single DOM element.
@@ -26,7 +17,15 @@ const defaultParams = {
 */
 export default function(selector, p) {
 
-  p = Object.assign({}, defaultParams, p);
+  // overrides default params
+  p = Object.assign({}, {
+    condition: true,
+    enter: {},
+    exit: {},
+    parent: select("body"),
+    transition: transition().duration(0),
+    update: {}
+  }, p);
 
   const className = (/\.([^#]+)/g).exec(selector),
         id = (/#([^\.]+)/g).exec(selector),
