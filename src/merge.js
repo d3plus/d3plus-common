@@ -37,7 +37,6 @@ export default function(objects, aggs = {}) {
       }
       else if (types.indexOf(Number) >= 0) value = sum(values);
       else {
-        console.log(k, types, values);
         value = Array.from(new Set(values.filter(v => v !== void 0)));
         if (value.length === 1) value = value[0];
       }
