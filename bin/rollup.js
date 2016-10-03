@@ -28,7 +28,7 @@ module.exports = function(opts = {}) {
     }
   }
 
-  const plugins = [json({include: ["src/locales/**/*.json"]})];
+  const plugins = [json()];
   if (opts.deps) plugins.push(deps({jsnext: true}));
   plugins.push(buble({exclude: ["**/*.json", "node_modules/d3-*/**"]}));
 
