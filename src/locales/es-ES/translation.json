@@ -1,0 +1,6 @@
+{
+  "array": {
+    "lowercase": ["una", "y", "en", "pero", "en", "de", "o", "el", "la", "los", "las", "para", "a", "con"],
+    "uppercase": ["CEO", "CEOs", "CFO", "CFOs", "CNC", "COO", "COOs", "CPU", "CPUs", "PIB", "HVAC", "ID", "TI", "I&D", "TV", "UI"]
+  }
+}

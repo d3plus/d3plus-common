@@ -1,6 +1,7 @@
 const banner = require("./banner"),
       buble = require("rollup-plugin-buble"),
       deps = require("rollup-plugin-node-resolve"),
+      json = require("rollup-plugin-json"),
       rollup = require("rollup"),
       shell = require("shelljs"),
       watch = require("rollup-watch"),
@@ -8,6 +9,11 @@ const banner = require("./banner"),
 
 module.exports = function(opts = {}) {
 
+  /**
+      @function output
+      @desc Custom event handler for rollup watch bundle.
+      @private
+  */
   function output(e) {
     switch (e.code) {
       case "BUILD_START":
@@ -22,9 +28,9 @@ module.exports = function(opts = {}) {
     }
   }
 
-  const plugins = [];
+  const plugins = [json({include: ["src/locales/**/*.json"]})];
   if (opts.deps) plugins.push(deps({jsnext: true}));
-  plugins.push(buble({exclude: "node_modules/d3-*/**"}));
+  plugins.push(buble({exclude: ["**/*.json", "node_modules/d3-*/**"]}));
 
   const entry = {entry: "index.js", plugins, onwarn: () => {}};
   const config = {

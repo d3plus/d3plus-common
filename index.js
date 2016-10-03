@@ -4,6 +4,7 @@ export {default as BaseClass} from "./src/BaseClass";
 export {default as closest} from "./src/closest";
 export {default as constant} from "./src/constant";
 export {default as elem} from "./src/elem";
+export {default as locale} from "./src/locale";
 export {default as merge} from "./src/merge";
 export {default as prefix} from "./src/prefix";
 export {default as stylize} from "./src/stylize";
