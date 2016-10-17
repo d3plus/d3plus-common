@@ -1,4 +1,14 @@
 /**
+    @function s
+    @desc Returns 4 random characters, used for constructing unique identifiers.
+    @private
+*/
+function s() {
+  return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+}
+
+
+/**
     @class BaseClass
     @desc An abstract class that contains some global methods and functionality.
 */
@@ -10,12 +20,9 @@ export default class BaseClass {
       @private
   */
   constructor() {
-
-    function s() {
-      return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    }
-
+    this._on = {};
     this._uuid = `${s()}${s()}-${s()}-${s()}-${s()}-${s()}${s()}${s()}`;
+
   }
 
   /**
@@ -33,6 +40,24 @@ export default class BaseClass {
       for (const k in this.prototype.constructor) if (k !== "config" && {}.hasOwnProperty.call(this, k)) config[k] = this[k]();
       return config;
     }
+  }
+
+  /**
+      @memberof BaseClass
+      @desc Adds or removes a *listener* to each object for the specified event *typenames*. If a *listener* is not specified, returns the currently assigned listener for the specified event *typename*. Mirrors the core [d3-selection](https://github.com/d3/d3-selection#selection_on) behavior.
+      @param {String} [*typenames*]
+      @param {Function} [*listener*]
+      @example <caption>By default, listeners apply globally to all objects, however, passing a namespace with the class name gives control over specific elements:</caption>
+new Plot
+  .on("click.Shape", function(d) {
+    console.log("data for shape clicked:", d);
+  })
+  .on("click.Legend", function(d) {
+    console.log("data for legend clicked:", d);
+  })
+  */
+  on(_, f) {
+    return arguments.length === 2 ? (this._on[_] = f, this) : arguments.length ? typeof _ === "string" ? this._on[_] : (this._on = Object.assign({}, this._on, _), this) : this._on;
   }
 
 }
