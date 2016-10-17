@@ -61,6 +61,7 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 * [BaseClass](#BaseClass)
     * [new BaseClass()](#new_BaseClass_new)
     * [.config([*value*])](#BaseClass.config)
+    * [.on([*typenames*], [*listener*])](#BaseClass.on)
 
 <a name="new_BaseClass_new"></a>
 
@@ -78,6 +79,28 @@ If *value* is specified, sets the methods that correspond to the key/value pairs
 | --- | --- |
 | [*value*] | <code>Object</code> | 
 
+<a name="BaseClass.on"></a>
+
+#### BaseClass.on([*typenames*], [*listener*])
+Adds or removes a *listener* to each object for the specified event *typenames*. If a *listener* is not specified, returns the currently assigned listener for the specified event *typename*. Mirrors the core [d3-selection](https://github.com/d3/d3-selection#selection_on) behavior.
+
+**Kind**: static method of <code>[BaseClass](#BaseClass)</code>  
+
+| Param | Type |
+| --- | --- |
+| [*typenames*] | <code>String</code> | 
+| [*listener*] | <code>function</code> | 
+
+**Example** *(By default, listeners apply globally to all objects, however, passing a namespace with the class name gives control over specific elements:)*  
+```js
+new Plot
+  .on("click.Shape", function(d) {
+    console.log("data for shape clicked:", d);
+  })
+  .on("click.Legend", function(d) {
+    console.log("data for legend clicked:", d);
+  })
+```
 <a name="accessor"></a>
 
 ### accessor(key, [def])
@@ -209,4 +232,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Tue, 11 Oct 2016 18:20:53 GMT</sub>
+###### <sub>Documentation generated on Mon, 17 Oct 2016 19:29:07 GMT</sub>
