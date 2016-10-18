@@ -95,4 +95,11 @@ const labels = [
 ].map(l => ({name: l.name, color: l.color.substring(1)}));
 
 const issueSync = new LabelSync({}, "d3plus", name, token);
-issueSync.updateLabels(labels).then(() => shell.echo("issue labels synced"));
+issueSync.createLabels(labels)
+  .then(() => shell.echo("issue labels created"))
+  .catch(err => console.log(err.toJSON()))
+  .then(() => {
+    issueSync.updateLabels(labels)
+      .then(() => shell.echo("issue labels synced"))
+      .catch(err => console.log(err.toJSON()));
+  });
