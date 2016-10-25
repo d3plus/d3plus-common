@@ -22,7 +22,6 @@ export default class BaseClass {
   constructor() {
     this._on = {};
     this._uuid = `${s()}${s()}-${s()}-${s()}-${s()}-${s()}${s()}${s()}`;
-
   }
 
   /**
