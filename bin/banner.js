@@ -4,6 +4,6 @@ const shell = require("shelljs"),
 module.exports = `/*
   ${name} v${version}
   ${description}
-  Copyright (c) 2016 D3plus - ${homepage}
+  Copyright (c) ${new Date().getFullYear()} D3plus - ${homepage}
   @license ${license}
 */`;
