@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
-const shell = require("shelljs");
+const log = require("./log")("documentation"),
+      shell = require("shelljs");
 const {description, name, version} = JSON.parse(shell.cat("package.json"));
 
 let minor = version.split(".");
@@ -15,6 +16,8 @@ function getVar(contents, key, def = 0, num = true) {
 }
 
 if (shell.test("-d", "example")) {
+
+  log.timer("analyzing example directory");
 
   let header = false;
 
@@ -57,6 +60,7 @@ if (shell.test("-d", "example")) {
 
 }
 
+log.timer("writing JSDOC comments to README.md");
 const template = `${shell.tempdir()}/README.hbs`;
 const contents = `# ${name}
 
@@ -85,4 +89,4 @@ ${examples}
 new shell.ShellString(contents).to(template);
 
 shell.exec(`jsdoc2md '+(bin|src)/**/*.js' --heading-depth 3 -t ${template} > README.md`);
-shell.echo("compiled README.md from JSDoc comments and examples");
+log.exit();

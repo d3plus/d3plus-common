@@ -4,32 +4,40 @@
 
 const LabelSync = require("github-issues-label-sync"),
       eslint = require("./eslint.json"),
+      log = require("./log")("environment setup"),
       shell = require("shelljs"),
       token = shell.env.GITHUB_TOKEN,
       {name} = JSON.parse(shell.cat("package.json"));
 
-shell.echo("creating .eslintrc");
+
+
+log.timer(".eslintrc");
 new shell.ShellString(JSON.stringify(eslint, null, 2)).to(".eslintrc");
 
-shell.echo("creating .gitignore");
+
+log.timer(".gitignore");
 new shell.ShellString(`.DS_Store
 build/
 example/*.html
 node_modules
+npm-debug.log
 test/*.html
 test/*.png
 `).to(".gitignore");
 
-shell.echo("creating .npmignore");
+
+log.timer(".npmignore");
 new shell.ShellString(`build/*.zip
 example/
 test/
 .eslintrc
 .gitignore
 .travis.yml
+npm-debug.log
 `).to(".npmignore");
 
-shell.echo("creating .travis.yml");
+
+log.timer(".travis.yml");
 new shell.ShellString(`language: node_js
 
 node_js:
@@ -46,7 +54,8 @@ install:
   - npm link
 `).to(".travis.yml");
 
-shell.echo("creating LICENSE");
+
+log.timer("LICENSE");
 new shell.ShellString(`The MIT License (MIT)
 
 Copyright (c) ${new Date().getFullYear()} D3plus
@@ -71,8 +80,10 @@ SOFTWARE.
 `).to("LICENSE");
 
 
+
 // labeling system inspired by
 // https://robinpowered.com/blog/best-practice-system-for-organizing-and-tagging-github-issues/
+log.timer("github issue labels");
 const labels = [
   {color: "#ee3f46", name: "bug"},
 
@@ -96,10 +107,15 @@ const labels = [
 
 const issueSync = new LabelSync({}, "d3plus", name, token);
 issueSync.createLabels(labels)
-  .then(() => shell.echo("issue labels created"))
-  .catch(err => console.log(err.toJSON()))
+  .catch(err => {
+    log.fail();
+    shell.echo(err.toJSON());
+  })
   .then(() => {
     issueSync.updateLabels(labels)
-      .then(() => shell.echo("issue labels synced"))
-      .catch(err => console.log(err.toJSON()));
+      .then(() => log.exit())
+      .catch(err => {
+        log.fail();
+        shell.echo(err.toJSON());
+      });
   });

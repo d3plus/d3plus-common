@@ -1,11 +1,13 @@
 #! /usr/bin/env node
 
 const fs = require("fs"),
+      log = require("./log")("building examples"),
       port = 4000,
       screenshot = require("electron-screenshot-service"),
       server = require("live-server"),
       shell = require("shelljs");
 
+shell.config.silent = true;
 const {name, version} = JSON.parse(shell.cat("package.json"));
 
 let minor = version.split(".");
@@ -51,8 +53,6 @@ height: ${height}
 ---\n\n${mdc}`).to(newFile.replace(".html", "index.md"));
         shell.cp(file.replace("html", "png"), newFile.replace(".html", "thumb.png"));
 
-        shell.echo(`compiled "${file.replace("html", "md")}"`);
-
         resolve(img);
 
       });
@@ -86,6 +86,7 @@ ${space}`;
 
 if (shell.test("-d", "example")) {
 
+  log.timer("converting markdown to html");
   const examples = [];
   shell.ls("example/*.md").forEach(file => {
 
@@ -115,7 +116,8 @@ if (shell.test("-d", "example")) {
 
   });
 
-  server.start({noBrowser: true, port}).on("listening", () => {
+  log.timer("taking screenshots");
+  server.start({logLevel: 0, noBrowser: true, port}).on("listening", () => {
 
     shell.rm("-rf", `../d3plus-website/_examples/${name}`);
 
@@ -123,12 +125,13 @@ if (shell.test("-d", "example")) {
 
       screenshot.close();
 
+      log.timer("uploading examples to d3plus.org");
       shell.cd("../d3plus-website");
       shell.exec(`git add _examples/${name}/*`);
       shell.exec(`git commit -m \"${name} examples\"`);
       shell.exec("git push -q");
 
-      shell.echo("successfully compiled and published examples");
+      log.exit();
       server.shutdown();
 
     });
@@ -138,12 +141,16 @@ if (shell.test("-d", "example")) {
 }
 else {
 
+  log.timer("cleaning up website folders");
   shell.rm("-rf", `../d3plus-website/_examples/${name}`);
 
   shell.cd("../d3plus-website");
   shell.exec(`git add _examples/${name}/*`);
   shell.exec(`git commit -m \"${name} examples\"`);
   shell.exec("git push -q");
+  log.done();
 
-  shell.echo("no examples found matching 'example/*.md' in root");
+  log.warn("no examples found matching 'example/*.md' in root");
+  log.exit();
+
 }

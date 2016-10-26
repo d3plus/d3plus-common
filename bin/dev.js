@@ -1,9 +1,16 @@
 #! /usr/bin/env node
 
-require("live-server").start({
-  noBrowser: true,
-  port: 4000,
-  watch: ["build", "test"]
-});
+const log = require("./log")("development environment"),
+      port = 4000,
+      rollup = require("./rollup");
 
-require("./rollup")({deps: true, watch: true});
+log.timer(`starting live-server on port ${port}`);
+require("live-server").start({
+  logLevel: 0,
+  noBrowser: true,
+  port,
+  watch: ["build", "test"]
+}).on("listening", () => {
+  log.done();
+  rollup({deps: true, watch: true});
+});

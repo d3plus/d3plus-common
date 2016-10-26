@@ -1,9 +1,20 @@
 #! /usr/bin/env node
 
-const shell = require("shelljs");
+const log = require("./log")("testing suite"),
+      shell = require("shelljs");
 
-shell.echo("running eslint");
-shell.exec("eslint --color index.js bin/*.js src/*.js test/*.js");
+log.timer("linting code");
+const linter = shell.exec("eslint --color index.js bin/*.js src/*.js test/*.js", {silent: true});
+if (linter.code) {
+  log.fail();
+  shell.echo(linter.stdout);
+  shell.exit(linter.code);
+}
+else log.done();
 
-shell.echo("\nrunning tests");
-shell.exec("browserify -t [ babelify --presets [ es2015 ] ] test/*.js | tape-run --render='faucet'");
+log.timer("unit and browser tests");
+const tests = shell.exec("browserify -t [ babelify --presets [ es2015 ] ] test/*.js | tape-run --render='faucet'", {silent: true});
+log.done();
+
+shell.echo(tests.stdout);
+if (tests.code) shell.exit(tests.code);
