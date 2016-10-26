@@ -43,11 +43,23 @@ rollup().then(() => {
     shell.exec("npm publish ./");
 
     log.timer("commiting all modified files for release");
-    shell.exec("git add --all", {silent: false});
-    shell.exec(`git commit -m \"compiles v${version}\"`, {silent: false});
+    const add = shell.exec("git add --all");
+    if (add.code) {
+      log.fail();
+      shell.exit(add.code);
+    }
+    const commit = shell.exec(`git commit -m \"compiles v${version}\"`);
+    if (commit.code) {
+      log.fail();
+      shell.exit(commit.code);
+    }
 
     log.timer("pushing to repository");
-    shell.exec("git push -q", {silent: false});
+    const push = shell.exec("git push -q");
+    if (push.code) {
+      log.fail();
+      shell.exit(push.code);
+    }
 
     log.timer("tagging latest commit");
     shell.exec(`git tag v${version}`);
