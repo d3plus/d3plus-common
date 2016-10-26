@@ -16,5 +16,6 @@ log.timer("unit and browser tests");
 const tests = shell.exec("browserify -t [ babelify --presets [ es2015 ] ] test/*.js | tape-run --render='faucet'", {silent: true});
 log.done();
 
+shell.echo("");
 shell.echo(tests.stdout);
 if (tests.code) shell.exit(tests.code);
