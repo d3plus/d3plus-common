@@ -125,11 +125,16 @@ if (shell.test("-d", "example")) {
 
       screenshot.close();
 
-      log.timer("uploading examples to d3plus.org");
-      shell.cd("../d3plus-website");
-      shell.exec(`git add _examples/${name}/*`);
-      shell.exec(`git commit -m \"${name} examples\"`);
-      shell.exec("git push -q");
+      if (shell.test("-d", "../d3plus-website")) {
+        log.timer("uploading examples to d3plus.org");
+        shell.cd("../d3plus-website");
+        shell.exec(`git add _examples/${name}/*`);
+        shell.exec(`git commit -m \"${name} examples\"`);
+        shell.exec("git push -q");
+      }
+      else {
+        log.warn("d3plus-website repository folder not found in parent directory, builds cannot be uploaded to d3plus.org");
+      }
 
       log.exit();
       server.shutdown();
@@ -142,14 +147,16 @@ if (shell.test("-d", "example")) {
 }
 else {
 
-  log.timer("cleaning up website folders");
-  shell.rm("-rf", `../d3plus-website/_examples/${name}`);
+  if (shell.test("-d", "../d3plus-website")) {
+    log.timer("cleaning up website folders");
+    shell.rm("-rf", `../d3plus-website/_examples/${name}`);
 
-  shell.cd("../d3plus-website");
-  shell.exec(`git add _examples/${name}/*`);
-  shell.exec(`git commit -m \"${name} examples\"`);
-  shell.exec("git push -q");
-  log.done();
+    shell.cd("../d3plus-website");
+    shell.exec(`git add _examples/${name}/*`);
+    shell.exec(`git commit -m \"${name} examples\"`);
+    shell.exec("git push -q");
+    log.done();
+  }
 
   log.warn("no examples found matching 'example/*.md' in root");
   log.exit();

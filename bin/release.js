@@ -65,16 +65,22 @@ rollup().then(() => {
     shell.exec(`git tag v${version}`);
     shell.exec("git push -q --tags");
 
-    log.timer("uploading builds to d3plus.org");
-    shell.cp(`build/${name}.js`, `../d3plus-website/js/${name}.v${minor}.js`);
-    shell.cp(`build/${name}.full.js`, `../d3plus-website/js/${name}.v${minor}.full.js`);
-    shell.cp(`build/${name}.min.js`, `../d3plus-website/js/${name}.v${minor}.min.js`);
-    shell.cp(`build/${name}.full.min.js`, `../d3plus-website/js/${name}.v${minor}.full.min.js`);
-    shell.cd("../d3plus-website");
-    shell.exec(`git add js/${name}.v${minor}.js js/${name}.v${minor}.min.js js/${name}.v${minor}.full.js js/${name}.v${minor}.full.min.js`);
-    shell.exec(`git commit -m \"${name} v${version}\"`);
-    shell.exec("git push -q");
-    shell.cd("-");
+    if (shell.test("-d", "../d3plus-website")) {
+      log.timer("uploading builds to d3plus.org");
+      shell.cp(`build/${name}.js`, `../d3plus-website/js/${name}.v${minor}.js`);
+      shell.cp(`build/${name}.full.js`, `../d3plus-website/js/${name}.v${minor}.full.js`);
+      shell.cp(`build/${name}.min.js`, `../d3plus-website/js/${name}.v${minor}.min.js`);
+      shell.cp(`build/${name}.full.min.js`, `../d3plus-website/js/${name}.v${minor}.full.min.js`);
+      shell.cd("../d3plus-website");
+      shell.exec(`git add js/${name}.v${minor}.js js/${name}.v${minor}.min.js js/${name}.v${minor}.full.js js/${name}.v${minor}.full.min.js`);
+      shell.exec(`git commit -m \"${name} v${version}\"`);
+      shell.exec("git push -q");
+      shell.cd("-");
+    }
+    else {
+      log.done();
+      log.warn("d3plus-website repository folder not found in parent directory, builds cannot be uploaded to d3plus.org");
+    }
 
     log.timer("publishing release notes");
     release(token, {
