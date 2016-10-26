@@ -16,6 +16,7 @@ rollup().then(() => {
     log.timer("create .zip distribution");
     shell.exec(`rm -f build/${name}.zip && zip -j -q build/${name}.zip -- LICENSE README.md build/${name}.js build/${name}.min.js build/${name}.full.js build/${name}.full.min.js`);
     log.exit();
+    shell.exit(0);
 
   });
 });

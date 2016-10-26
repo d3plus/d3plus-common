@@ -18,4 +18,4 @@ log.done();
 
 shell.echo("");
 shell.echo(tests.stdout);
-if (tests.code) shell.exit(tests.code);
+shell.exit(tests.code);

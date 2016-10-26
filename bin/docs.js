@@ -90,3 +90,4 @@ new shell.ShellString(contents).to(template);
 
 shell.exec(`jsdoc2md '+(bin|src)/**/*.js' --heading-depth 3 -t ${template} > README.md`);
 log.exit();
+shell.exit(0);

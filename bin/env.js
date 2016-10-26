@@ -111,12 +111,17 @@ issueSync.createLabels(labels)
   .catch(err => {
     log.fail();
     shell.echo(err.toJSON());
+    shell.exit(1);
   })
   .then(() => {
     issueSync.updateLabels(labels)
-      .then(() => log.exit())
+      .then(() => {
+        log.exit();
+        shell.exit(0);
+      })
       .catch(err => {
         log.fail();
         shell.echo(err.toJSON());
+        shell.exit(1);
       });
   });

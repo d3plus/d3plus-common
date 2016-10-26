@@ -133,6 +133,7 @@ if (shell.test("-d", "example")) {
 
       log.exit();
       server.shutdown();
+      shell.exit(0);
 
     });
 
@@ -152,5 +153,7 @@ else {
 
   log.warn("no examples found matching 'example/*.md' in root");
   log.exit();
+
+  shell.exit(0);
 
 }

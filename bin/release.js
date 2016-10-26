@@ -75,6 +75,7 @@ rollup().then(() => {
       if (error) {
         log.error();
         shell.echo(error.message);
+        shell.exit(1);
       }
       else {
 
@@ -88,6 +89,7 @@ rollup().then(() => {
           if (error) {
             log.error();
             shell.echo(error.message);
+            shell.exit(1);
           }
           else {
             log.done();
