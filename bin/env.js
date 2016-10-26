@@ -51,6 +51,7 @@ install:
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
   - npm install
+  - npm install -g d3plus-common
   - npm link
 `).to(".travis.yml");
 
