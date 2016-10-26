@@ -12,7 +12,7 @@ Common functions and methods used across D3plus modules.
 If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-common/releases/latest). The released bundle supports AMD, CommonJS, and vanilla environments. Create a [custom bundle using Rollup](https://github.com/rollup/rollup) or your preferred bundler. You can also load directly from [d3plus.org](https://d3plus.org):
 
 ```html
-<script src="https://d3plus.org/js/d3plus-common.v0.5.full.min.js"></script>
+<script src="https://d3plus.org/js/d3plus-common.v0.6.full.min.js"></script>
 ```
 
 
@@ -232,4 +232,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Tue, 18 Oct 2016 19:44:14 GMT</sub>
+###### <sub>Documentation generated on Wed, 26 Oct 2016 15:17:09 GMT</sub>
