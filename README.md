@@ -232,4 +232,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Thu, 27 Oct 2016 13:53:19 GMT</sub>
+###### <sub>Documentation generated on Thu, 27 Oct 2016 15:47:19 GMT</sub>
