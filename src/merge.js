@@ -14,7 +14,7 @@ merge([
     @example <caption>returns this</caption>
 {id: ["bar", "foo"], group: "A", value: 30, links: [1, 2, 3]}
 */
-export default function(objects, aggs = {}) {
+function objectMerge(objects, aggs = {}) {
 
   const availableKeys = new Set(merge(objects.map(o => keys(o)))),
         newObject = {};
@@ -36,6 +36,7 @@ export default function(objects, aggs = {}) {
         if (value.length === 1) value = value[0];
       }
       else if (types.indexOf(Number) >= 0) value = sum(values);
+      else if (types.indexOf(Object) >= 0) value = objectMerge(values);
       else {
         value = Array.from(new Set(values.filter(v => v !== void 0)));
         if (value.length === 1) value = value[0];
@@ -47,3 +48,5 @@ export default function(objects, aggs = {}) {
   return newObject;
 
 }
+
+export default objectMerge;
