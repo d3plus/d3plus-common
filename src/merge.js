@@ -24,10 +24,10 @@ export default function(objects, aggs = {}) {
     let value;
     if (aggs[k]) value = aggs[k](values);
     else {
-      const types = values.map(v => v ? v.constructor : v).filter(v => v !== void 0);
+      const types = values.map(v => v || v === false ? v.constructor : v).filter(v => v !== void 0);
       if (!types.length) value = undefined;
       else if (types.indexOf(Array) >= 0) {
-        value = merge(values.map(v => v.constructor === Array ? v : [v]));
+        value = merge(values.map(v => v instanceof Array ? v : [v]));
         value = Array.from(new Set(value));
         if (value.length === 1) value = value[0];
       }
