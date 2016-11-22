@@ -30,6 +30,9 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 <dt><a href="#accessor">accessor(key, [def])</a></dt>
 <dd><p>Wraps an object key in a simple accessor function.</p>
 </dd>
+<dt><a href="#assign">assign(...objects)</a></dt>
+<dd><p>A deeply recursive version of <code>Object.assign</code>.</p>
+</dd>
 <dt><a href="#attrize">attrize(elem, attrs)</a></dt>
 <dd><p>Applies each key/value in an object as an attr.</p>
 </dd>
@@ -41,6 +44,9 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 </dd>
 <dt><a href="#elem">elem(selector, params)</a></dt>
 <dd><p>Manages the enter/update/exit pattern for a single DOM element.</p>
+</dd>
+<dt><a href="#isObject">isObject(item)</a></dt>
+<dd><p>Detects if a variable is a javascript Object.</p>
 </dd>
 <dt><a href="#merge">merge(objects, aggs)</a></dt>
 <dd><p>Combines an Array of Objects together and returns a new Object.</p>
@@ -124,6 +130,26 @@ function(d) {
   return d["id"];
 }
 ```
+<a name="assign"></a>
+
+### assign(...objects)
+A deeply recursive version of `Object.assign`.
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| ...objects | <code>Object</code> | 
+
+**Example** *(this)*  
+```js
+assign({id: "foo", deep: {group: "A"}}, {id: "bar", deep: {value: 20}}));
+    
+```
+**Example** *(returns this)*  
+```js
+{id: "bar", group: "A", value: 20}
+```
 <a name="attrize"></a>
 
 ### attrize(elem, attrs)
@@ -188,6 +214,17 @@ Manages the enter/update/exit pattern for a single DOM element.
 | [params.transition] | <code>D3Transition</code> | <code>d3.transition().duration(0)</code> | The transition to use when animated the different life cycle stages. |
 | [params.update] | <code>Object</code> | <code>{}</code> | A collection of key/value pairs that map to attributes to be given on update. |
 
+<a name="isObject"></a>
+
+### isObject(item)
+Detects if a variable is a javascript Object.
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| item | <code>\*</code> | 
+
 <a name="merge"></a>
 
 ### merge(objects, aggs)
@@ -232,4 +269,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Wed, 02 Nov 2016 18:59:23 GMT</sub>
+###### <sub>Documentation generated on Tue, 22 Nov 2016 13:17:54 GMT</sub>
