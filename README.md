@@ -66,8 +66,8 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 
 * [BaseClass](#BaseClass)
     * [new BaseClass()](#new_BaseClass_new)
-    * [.config([*value*])](#BaseClass.config)
-    * [.on([*typenames*], [*listener*])](#BaseClass.on)
+    * [.config([*value*])](#BaseClass.config) ↩︎
+    * [.on([*typenames*], [*listener*])](#BaseClass.on) ↩︎
 
 <a name="new_BaseClass_new"></a>
 
@@ -76,10 +76,11 @@ An abstract class that contains some global methods and functionality.
 
 <a name="BaseClass.config"></a>
 
-#### BaseClass.config([*value*])
+#### BaseClass.config([*value*]) ↩︎
 If *value* is specified, sets the methods that correspond to the key/value pairs and returns this class. If *value* is not specified, returns the current configuration.
 
 **Kind**: static method of <code>[BaseClass](#BaseClass)</code>  
+**Chainable**  
 
 | Param | Type |
 | --- | --- |
@@ -87,10 +88,11 @@ If *value* is specified, sets the methods that correspond to the key/value pairs
 
 <a name="BaseClass.on"></a>
 
-#### BaseClass.on([*typenames*], [*listener*])
+#### BaseClass.on([*typenames*], [*listener*]) ↩︎
 Adds or removes a *listener* to each object for the specified event *typenames*. If a *listener* is not specified, returns the currently assigned listener for the specified event *typename*. Mirrors the core [d3-selection](https://github.com/d3/d3-selection#selection_on) behavior.
 
 **Kind**: static method of <code>[BaseClass](#BaseClass)</code>  
+**Chainable**  
 
 | Param | Type |
 | --- | --- |
@@ -269,4 +271,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Tue, 22 Nov 2016 13:17:54 GMT</sub>
+###### <sub>Documentation generated on Mon, 19 Dec 2016 20:15:23 GMT</sub>
