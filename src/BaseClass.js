@@ -37,7 +37,7 @@ export default class BaseClass {
     }
     else {
       const config = {};
-      for (const k in this.__proto__) if (k.indexOf("_") !== 0 && k !== "config") config[k] = this[k]();
+      for (const k in this.__proto__) if (k.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(k)) config[k] = this[k]();
       return config;
     }
   }
@@ -58,10 +58,6 @@ new Plot
   })
   */
   on(_, f) {
-    return arguments.length === 2 ? (this._on[_] = f, this) : arguments.length ? typeof _ === "string" ? this._on[_] : (this._on = Object.assign({}, this._on, _), this) : this._on;
-  }
-
-  _private(_, f) {
     return arguments.length === 2 ? (this._on[_] = f, this) : arguments.length ? typeof _ === "string" ? this._on[_] : (this._on = Object.assign({}, this._on, _), this) : this._on;
   }
 
