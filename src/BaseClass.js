@@ -28,6 +28,7 @@ export default class BaseClass {
       @memberof BaseClass
       @desc If *value* is specified, sets the methods that correspond to the key/value pairs and returns this class. If *value* is not specified, returns the current configuration.
       @param {Object} [*value*]
+      @chainable
   */
   config(_) {
     if (arguments.length) {
@@ -46,6 +47,7 @@ export default class BaseClass {
       @desc Adds or removes a *listener* to each object for the specified event *typenames*. If a *listener* is not specified, returns the currently assigned listener for the specified event *typename*. Mirrors the core [d3-selection](https://github.com/d3/d3-selection#selection_on) behavior.
       @param {String} [*typenames*]
       @param {Function} [*listener*]
+      @chainable
       @example <caption>By default, listeners apply globally to all objects, however, passing a namespace with the class name gives control over specific elements:</caption>
 new Plot
   .on("click.Shape", function(d) {
