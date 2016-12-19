@@ -36,7 +36,7 @@ export default class BaseClass {
     }
     else {
       const config = {};
-      for (const k in this.prototype.constructor) if (k !== "config" && {}.hasOwnProperty.call(this, k)) config[k] = this[k]();
+      for (const k in this.__proto__) if (k !== "config") config[k] = this[k]();
       return config;
     }
   }
