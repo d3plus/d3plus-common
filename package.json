@@ -39,6 +39,6 @@
     "i18next": "^5.0.0"
   },
   "devDependencies": {
-    "d3plus-dev": "^0.1.10"
+    "d3plus-dev": "^0.1.14"
   }
 }
