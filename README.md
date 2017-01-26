@@ -271,4 +271,4 @@ Applies each key/value in an object as a style.
 
 
 
-###### <sub>Documentation generated on Mon, 19 Dec 2016 20:23:06 GMT</sub>
+###### <sub>Documentation generated on Thu, 26 Jan 2017 15:11:38 GMT</sub>
