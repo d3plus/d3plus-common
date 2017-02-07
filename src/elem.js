@@ -31,7 +31,8 @@ export default function(selector, p) {
         id = (/#([^\.]+)/g).exec(selector),
         tag = (/^([^.^#]+)/g).exec(selector)[1];
 
-  const elem = p.parent.selectAll(selector).data(p.condition ? [null] : []);
+  const elem = p.parent.selectAll(selector.includes(":") ? selector.split(":")[1] : selector)
+    .data(p.condition ? [null] : []);
 
   const enter = elem.enter().append(tag).call(attrize, p.enter);
 
