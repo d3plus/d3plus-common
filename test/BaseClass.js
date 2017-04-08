@@ -1,10 +1,10 @@
-import {test} from "tape";
+import zora from "zora";
 import {default as BaseClass} from "../src/BaseClass.js";
 
-test("BaseClass", assert => {
+export default zora()
+  .test("BaseClass", assert => {
 
-  const one = new BaseClass(), two = new BaseClass();
-  assert.test(one._uuid !== two._uuid, "_uuid");
-  assert.end();
+    const one = new BaseClass(), two = new BaseClass();
+    assert.ok(one._uuid !== two._uuid, "_uuid");
 
-});
+  });

@@ -1,11 +1,10 @@
-import {test} from "tape";
+import zora from "zora";
 import {default as elem} from "../src/elem.js";
 
-test("elem", assert => {
+export default zora()
+  .test("elem", assert => {
 
-  const svg = elem("svg.className");
+    const svg = elem("svg.className");
+    assert.equal(svg.size(), 1, "Append");
 
-  assert.equals(svg.size(), 1, "Append");
-  assert.end();
-
-});
+  });

@@ -1,9 +1,9 @@
-import {test} from "tape";
+import zora from "zora";
 import {default as prefix} from "../src/prefix.js";
 
-test("prefix", assert => {
+export default zora()
+  .test("prefix", assert => {
 
-  assert.equals(prefix(), "-webkit-", "Webkit");
-  assert.end();
+    assert.equal(prefix(), "-webkit-", "Webkit");
 
-});
+  });
