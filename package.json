@@ -36,7 +36,7 @@
     "d3-collection": "^1.0.0",
     "d3-selection": "^1.0.0",
     "d3-transition": "^1.0.1",
-    "i18next": "^7.1.2"
+    "i18next": "^8.0.0"
   },
   "devDependencies": {
     "d3plus-dev": "^0.4.0"
