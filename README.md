@@ -1,15 +1,12 @@
 # d3plus-common
 
-[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common)
-[![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common)
-[![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common)
-[![Slack](https://img.shields.io/badge/Slack-Click%20to%20Join!-green.svg?style=social)](https://goo.gl/forms/ynrKdvusekAwRMPf2)
+[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common) [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat)](https://gitter.im/d3plus/)
 
 Common functions and methods used across D3plus modules.
 
 ## Installing
 
-If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-common/releases/latest). The released bundle supports AMD, CommonJS, and vanilla environments. Create a [custom bundle using Rollup](https://github.com/rollup/rollup) or your preferred bundler. You can also load directly from [d3plus.org](https://d3plus.org):
+If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-common/releases/latest). The released bundle supports AMD, CommonJS, and vanilla environments. You can also load directly from [d3plus.org](https://d3plus.org):
 
 ```html
 <script src="https://d3plus.org/js/d3plus-common.v0.6.full.min.js"></script>
@@ -17,89 +14,56 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 
 
 ## API Reference
-### Classes
 
-<dl>
-<dt><a href="#BaseClass">BaseClass</a></dt>
-<dd></dd>
-</dl>
+##### Classes
+* [BaseClass](#BaseClass) - An abstract class that contains some global methods and functionality.
 
-### Functions
+##### Functions
+* [accessor](#accessor) - Wraps an object key in a simple accessor function.
+* [assign](#assign) - A deeply recursive version of `Object.assign`.
+* [attrize](#attrize) - Applies each key/value in an object as an attr.
+* [closest](#closest) - Finds the closest numeric value in an array.
+* [constant](#constant) - Wraps non-function variables in a simple return function.
+* [elem](#elem) - Manages the enter/update/exit pattern for a single DOM element.
+* [isObject](#isObject) - Detects if a variable is a javascript Object.
+* [merge](#merge) - Combines an Array of Objects together and returns a new Object.
+* [prefix](#prefix) - Returns the appropriate CSS vendor prefix, given the current browser.
+* [stylize](#stylize) - Applies each key/value in an object as a style.
 
-<dl>
-<dt><a href="#accessor">accessor(key, [def])</a></dt>
-<dd><p>Wraps an object key in a simple accessor function.</p>
-</dd>
-<dt><a href="#assign">assign(...objects)</a></dt>
-<dd><p>A deeply recursive version of <code>Object.assign</code>.</p>
-</dd>
-<dt><a href="#attrize">attrize(elem, attrs)</a></dt>
-<dd><p>Applies each key/value in an object as an attr.</p>
-</dd>
-<dt><a href="#closest">closest(n, arr)</a></dt>
-<dd><p>Finds the closest numeric value in an array.</p>
-</dd>
-<dt><a href="#constant">constant(value)</a></dt>
-<dd><p>Wraps non-function variables in a simple return function.</p>
-</dd>
-<dt><a href="#elem">elem(selector, params)</a></dt>
-<dd><p>Manages the enter/update/exit pattern for a single DOM element.</p>
-</dd>
-<dt><a href="#isObject">isObject(item)</a></dt>
-<dd><p>Detects if a variable is a javascript Object.</p>
-</dd>
-<dt><a href="#merge">merge(objects, aggs)</a></dt>
-<dd><p>Combines an Array of Objects together and returns a new Object.</p>
-</dd>
-<dt><a href="#prefix">prefix()</a></dt>
-<dd><p>Returns the appropriate CSS vendor prefix, given the current browser.</p>
-</dd>
-<dt><a href="#stylize">stylize(elem, styles)</a></dt>
-<dd><p>Applies each key/value in an object as a style.</p>
-</dd>
-</dl>
+---
 
 <a name="BaseClass"></a>
+#### **BaseClass** [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L11)
 
-### BaseClass
-**Kind**: global class  
+
+This is a global class.
+
 
 * [BaseClass](#BaseClass)
-    * [new BaseClass()](#new_BaseClass_new)
     * [.config([*value*])](#BaseClass.config) ↩︎
     * [.on([*typenames*], [*listener*])](#BaseClass.on) ↩︎
 
-<a name="new_BaseClass_new"></a>
+<a name="BaseClass.config" href="BaseClass.config">#</a> BaseClass.**config**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L33)
 
-#### new BaseClass()
-An abstract class that contains some global methods and functionality.
-
-<a name="BaseClass.config"></a>
-
-#### BaseClass.config([*value*]) ↩︎
 If *value* is specified, sets the methods that correspond to the key/value pairs and returns this class. If *value* is not specified, returns the current configuration.
 
-**Kind**: static method of <code>[BaseClass](#BaseClass)</code>  
-**Chainable**  
 
-| Param | Type |
-| --- | --- |
-| [*value*] | <code>Object</code> | 
+This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainable with other methods of this Class.
 
-<a name="BaseClass.on"></a>
+<a name="BaseClass.on" href="BaseClass.on">#</a> BaseClass.**on**([*typenames*], [*listener*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L60)
 
-#### BaseClass.on([*typenames*], [*listener*]) ↩︎
 Adds or removes a *listener* to each object for the specified event *typenames*. If a *listener* is not specified, returns the currently assigned listener for the specified event *typename*. Mirrors the core [d3-selection](https://github.com/d3/d3-selection#selection_on) behavior.
 
-**Kind**: static method of <code>[BaseClass](#BaseClass)</code>  
-**Chainable**  
+
+This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainable with other methods of this Class.
+
 
 | Param | Type |
 | --- | --- |
 | [*typenames*] | <code>String</code> | 
 | [*listener*] | <code>function</code> | 
 
-**Example** *(By default, listeners apply globally to all objects, however, passing a namespace with the class name gives control over specific elements:)*  
+By default, listeners apply globally to all objects, however, passing a namespace with the class name gives control over specific elements:
 ```js
 new Plot
   .on("click.Shape", function(d) {
@@ -109,101 +73,115 @@ new Plot
     console.log("data for legend clicked:", d);
   })
 ```
-<a name="accessor"></a>
+---
 
-### accessor(key, [def])
+<a name="accessor"></a>
+#### d3plus.**accessor**(key, [def]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/accessor.js#L1)
+
 Wraps an object key in a simple accessor function.
 
-**Kind**: global function  
+
+This is a global function.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>String</code> | The key to be returned from each Object passed to the function. |
 | [def] | <code>\*</code> | A default value to be returned if the key is not present. |
 
-**Example** *(this)*  
+this
 ```js
 accessor("id");
     
 ```
-**Example** *(returns this)*  
+returns this
 ```js
 function(d) {
   return d["id"];
 }
 ```
-<a name="assign"></a>
+---
 
-### assign(...objects)
+<a name="assign"></a>
+#### d3plus.**assign**(...objects) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/assign.js#L3)
+
 A deeply recursive version of `Object.assign`.
 
-**Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| ...objects | <code>Object</code> | 
+This is a global function.
 
-**Example** *(this)*  
+this
 ```js
 assign({id: "foo", deep: {group: "A"}}, {id: "bar", deep: {value: 20}}));
     
 ```
-**Example** *(returns this)*  
+returns this
 ```js
 {id: "bar", group: "A", value: 20}
 ```
-<a name="attrize"></a>
+---
 
-### attrize(elem, attrs)
+<a name="attrize"></a>
+#### d3plus.**attrize**(elem, attrs) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/attrize.js#L1)
+
 Applies each key/value in an object as an attr.
 
-**Kind**: global function  
+
+This is a global function.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
 | elem | <code>D3selection</code> | The D3 element to apply the styles to. |
 | attrs | <code>Object</code> | An object of key/value attr pairs. |
 
-<a name="closest"></a>
+---
 
-### closest(n, arr)
+<a name="closest"></a>
+#### d3plus.**closest**(n, arr) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/closest.js#L1)
+
 Finds the closest numeric value in an array.
 
-**Kind**: global function  
+
+This is a global function.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
 | n | <code>Number</code> | The number value to use when searching the array. |
 | arr | <code>Array</code> | The array of values to test against. |
 
-<a name="constant"></a>
+---
 
-### constant(value)
+<a name="constant"></a>
+#### d3plus.**constant**(value) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/constant.js#L1)
+
 Wraps non-function variables in a simple return function.
 
-**Kind**: global function  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>Array</code> &#124; <code>Number</code> &#124; <code>Object</code> &#124; <code>String</code> | The value to be returned from the function. |
+This is a global function.
 
-**Example** *(this)*  
+this
 ```js
 constant(42);
     
 ```
-**Example** *(returns this)*  
+returns this
 ```js
 function() {
   return 42;
 }
 ```
-<a name="elem"></a>
+---
 
-### elem(selector, params)
+<a name="elem"></a>
+#### d3plus.**elem**(selector, params) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/elem.js#L6)
+
 Manages the enter/update/exit pattern for a single DOM element.
 
-**Kind**: global function  
+
+This is a global function.
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -216,30 +194,33 @@ Manages the enter/update/exit pattern for a single DOM element.
 | [params.transition] | <code>D3Transition</code> | <code>d3.transition().duration(0)</code> | The transition to use when animated the different life cycle stages. |
 | [params.update] | <code>Object</code> | <code>{}</code> | A collection of key/value pairs that map to attributes to be given on update. |
 
-<a name="isObject"></a>
+---
 
-### isObject(item)
+<a name="isObject"></a>
+#### d3plus.**isObject**(item) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/isObject.js#L1)
+
 Detects if a variable is a javascript Object.
 
-**Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| item | <code>\*</code> | 
+This is a global function.
+
+---
 
 <a name="merge"></a>
+#### d3plus.**merge**(objects, aggs) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/merge.js#L4)
 
-### merge(objects, aggs)
 Combines an Array of Objects together and returns a new Object.
 
-**Kind**: global function  
+
+This is a global function.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
 | objects | <code>Array</code> | The Array of objects to be merged together. |
 | aggs | <code>Object</code> | An object containing specific aggregation methods (functions) for each key type. By default, numbers are summed and strings are returned as an array of unique values. |
 
-**Example** *(this)*  
+this
 ```js
 merge([
   {id: "foo", group: "A", value: 10, links: [1, 2]},
@@ -247,28 +228,36 @@ merge([
 ]);
     
 ```
-**Example** *(returns this)*  
+returns this
 ```js
 {id: ["bar", "foo"], group: "A", value: 30, links: [1, 2, 3]}
 ```
-<a name="prefix"></a>
+---
 
-### prefix()
+<a name="prefix"></a>
+#### d3plus.**prefix**() [<>](https://github.com/d3plus/d3plus-common/blob/master/src/prefix.js#L1)
+
 Returns the appropriate CSS vendor prefix, given the current browser.
 
-**Kind**: global function  
-<a name="stylize"></a>
 
-### stylize(elem, styles)
+This is a global function.
+
+---
+
+<a name="stylize"></a>
+#### d3plus.**stylize**(elem, styles) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/stylize.js#L1)
+
 Applies each key/value in an object as a style.
 
-**Kind**: global function  
+
+This is a global function.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
 | elem | <code>D3selection</code> | The D3 element to apply the styles to. |
 | styles | <code>Object</code> | An object of key/value style pairs. |
 
+---
 
-
-###### <sub>Documentation generated on Mon, 13 Mar 2017 19:04:17 GMT</sub>
+###### <sub>Documentation generated on Mon, 08 May 2017 17:27:11 GMT</sub>
