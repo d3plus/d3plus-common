@@ -10,7 +10,7 @@ function s() {
 
 /**
     @class BaseClass
-    @desc An abstract class that contains some global methods and functionality.
+    @summary An abstract class that contains some global methods and functionality.
 */
 export default class BaseClass {
 
