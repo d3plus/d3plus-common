@@ -1,16 +1,17 @@
 import i18next from "i18next";
 
-import enUS from "./locales/en-US/translation.json";
-import esES from "./locales/es-ES/translation.json";
+const namespace = "d3plus";
+import enUS from "./locales/en-US/d3plus.json";
+import esES from "./locales/es-ES/d3plus.json";
 
 export default i18next.init({
   fallbackLng: "en-US",
-  defaultNS: "d3plus",
-  fallbackNS: "d3plus",
+  defaultNS: namespace,
+  fallbackNS: namespace,
   initImmediate: false,
-  ns: "d3plus",
+  ns: namespace,
   resources: {
-    "en-US": {translation: enUS},
-    "es-ES": {translation: esES}
+    "en-US": {[namespace]: enUS},
+    "es-ES": {[namespace]: esES}
   }
 });
