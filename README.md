@@ -23,6 +23,7 @@ If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the 
 * [assign](#assign) - A deeply recursive version of `Object.assign`.
 * [attrize](#attrize) - Applies each key/value in an object as an attr.
 * [closest](#closest) - Finds the closest numeric value in an array.
+* [configPrep](#configPrep) - Preps a config object for d3plus data, and optionally bubbles up a specific nested type. When using this function, you must bind a d3plus class' `this` context.
 * [constant](#constant) - Wraps non-function variables in a simple return function.
 * [elem](#elem) - Manages the enter/update/exit pattern for a single DOM element.
 * [isObject](#isObject) - Detects if a variable is a javascript Object.
@@ -153,6 +154,23 @@ This is a global function.
 
 ---
 
+<a name="configPrep"></a>
+#### d3plus.**configPrep**([config], [type], [nest]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/configPrep.js#L3)
+
+Preps a config object for d3plus data, and optionally bubbles up a specific nested type. When using this function, you must bind a d3plus class' `this` context.
+
+
+This is a global function.
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [config] | <code>Object</code> | <code>this._shapeConfig</code> | The configuration object to parse. |
+| [type] | <code>String</code> | <code>&quot;shape&quot;</code> | The event classifier to user for "on" events. For example, the default event type of "shape" will apply all events in the "on" config object with that key, like "click.shape" and "mouseleave.shape", in addition to any gloval events like "click" and "mouseleave". |
+| [nest] | <code>String</code> |  | An optional nested key to bubble up to the parent config level. |
+
+---
+
 <a name="constant"></a>
 #### d3plus.**constant**(value) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/constant.js#L1)
 
@@ -260,4 +278,4 @@ This is a global function.
 
 ---
 
-###### <sub>Documentation generated on Mon, 08 May 2017 17:27:11 GMT</sub>
+###### <sub>Documentation generated on Wed, 24 May 2017 16:32:54 GMT</sub>
