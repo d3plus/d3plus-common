@@ -14,7 +14,7 @@ export default zora()
 
     stylize(div, styles);
 
-    assert.equal(div.style("color"), "rgb(255, 0, 0)", "Basic Style");
+    assert.equal(div.style("color"), "red", "Basic Style");
     assert.equal(div.style("font-size"), "12px", "Hyphenated Style");
 
   });
