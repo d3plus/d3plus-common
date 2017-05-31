@@ -7,7 +7,7 @@ import {default as isObject} from "./isObject";
     @example <caption>this</caption>
 assign({id: "foo", deep: {group: "A"}}, {id: "bar", deep: {value: 20}}));
     @example <caption>returns this</caption>
-{id: "bar", group: "A", value: 20}
+{id: "bar", deep: {group: "A", value: 20}}
 */
 function assign(...objects) {
 
@@ -22,7 +22,7 @@ function assign(...objects) {
 
       if (isObject(value)) {
 
-        if (target.hasOwnProperty(prop) && isObject(target[prop])) target[prop] = assign(target[prop], value);
+        if (target.hasOwnProperty(prop) && isObject(target[prop])) target[prop] = assign({}, target[prop], value);
         else target[prop] = value;
 
       }
@@ -40,7 +40,7 @@ function assign(...objects) {
               if (Object.is(targetItem, sourceItem)) return;
 
               if (isObject(targetItem) && isObject(sourceItem) || Array.isArray(targetItem) && Array.isArray(sourceItem)) {
-                targetArray[itemIndex] = assign(targetItem, sourceItem);
+                targetArray[itemIndex] = assign({}, targetItem, sourceItem);
               }
               else targetArray[itemIndex] = sourceItem;
 
