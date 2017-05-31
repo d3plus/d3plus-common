@@ -118,7 +118,7 @@ assign({id: "foo", deep: {group: "A"}}, {id: "bar", deep: {value: 20}}));
 ```
 returns this
 ```js
-{id: "bar", group: "A", value: 20}
+{id: "bar", deep: {group: "A", value: 20}}
 ```
 ---
 
@@ -278,4 +278,4 @@ This is a global function.
 
 ---
 
-###### <sub>Documentation generated on Fri, 26 May 2017 18:43:44 GMT</sub>
+###### <sub>Documentation generated on Wed, 31 May 2017 14:26:08 GMT</sub>
