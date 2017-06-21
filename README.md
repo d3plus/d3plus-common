@@ -30,11 +30,12 @@ If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the 
 * [merge](#merge) - Combines an Array of Objects together and returns a new Object.
 * [prefix](#prefix) - Returns the appropriate CSS vendor prefix, given the current browser.
 * [stylize](#stylize) - Applies each key/value in an object as a style.
+* [uuid](#uuid) - Returns a unique identifier.
 
 ---
 
 <a name="BaseClass"></a>
-#### **BaseClass** [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L11)
+#### **BaseClass** [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L3)
 
 
 This is a global class.
@@ -44,14 +45,14 @@ This is a global class.
     * [.config([*value*])](#BaseClass.config) ↩︎
     * [.on([*typenames*], [*listener*])](#BaseClass.on) ↩︎
 
-<a name="BaseClass.config" href="BaseClass.config">#</a> BaseClass.**config**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L33)
+<a name="BaseClass.config" href="BaseClass.config">#</a> BaseClass.**config**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L25)
 
 If *value* is specified, sets the methods that correspond to the key/value pairs and returns this class. If *value* is not specified, returns the current configuration.
 
 
 This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainable with other methods of this Class.
 
-<a name="BaseClass.on" href="BaseClass.on">#</a> BaseClass.**on**([*typenames*], [*listener*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L60)
+<a name="BaseClass.on" href="BaseClass.on">#</a> BaseClass.**on**([*typenames*], [*listener*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L52)
 
 Adds or removes a *listener* to each object for the specified event *typenames*. If a *listener* is not specified, returns the currently assigned listener for the specified event *typename*. Mirrors the core [d3-selection](https://github.com/d3/d3-selection#selection_on) behavior.
 
@@ -155,7 +156,7 @@ This is a global function.
 ---
 
 <a name="configPrep"></a>
-#### d3plus.**configPrep**([config], [type], [nest]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/configPrep.js#L3)
+#### d3plus.**configPrep**([config], [type], [nest]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/configPrep.js#L1)
 
 Preps a config object for d3plus data, and optionally bubbles up a specific nested type. When using this function, you must bind a d3plus class' `this` context.
 
@@ -278,4 +279,12 @@ This is a global function.
 
 ---
 
-###### <sub>Documentation generated on Wed, 31 May 2017 14:26:08 GMT</sub>
+<a name="uuid"></a>
+#### d3plus.**uuid**() [<>](https://github.com/d3plus/d3plus-common/blob/master/src/uuid.js#L10)
+
+
+This is a global function.
+
+---
+
+###### <sub>Documentation generated on Wed, 21 Jun 2017 21:29:04 GMT</sub>
