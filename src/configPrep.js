@@ -1,5 +1,3 @@
-import assign from "./assign";
-
 /**
     @function configPrep
     @desc Preps a config object for d3plus data, and optionally bubbles up a specific nested type. When using this function, you must bind a d3plus class' `this` context.
@@ -9,7 +7,7 @@ import assign from "./assign";
 */
 export default function configPrep(config = this._shapeConfig, type = "shape", nest = false) {
 
-  let newConfig = {duration: this._duration, on: {}};
+  const newConfig = {duration: this._duration, on: {}};
 
   const wrapFunction = func => (d, i, s) => {
     while (d.__d3plus__ && d.data) {
@@ -57,8 +55,8 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
 
   keyEval(newConfig, config);
   if (this._on) parseEvents(newConfig, this._on);
+  if (nest && config[nest]) keyEval(newConfig, config[nest]);
 
-  if (nest && config[nest]) newConfig = assign(newConfig, config[nest]);
   return newConfig;
 
 }
