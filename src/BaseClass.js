@@ -1,12 +1,4 @@
-/**
-    @function s
-    @desc Returns 4 random characters, used for constructing unique identifiers.
-    @private
-*/
-function s() {
-  return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
-
+import uuid from "./uuid";
 
 /**
     @class BaseClass
@@ -21,7 +13,7 @@ export default class BaseClass {
   */
   constructor() {
     this._on = {};
-    this._uuid = `${s()}${s()}-${s()}-${s()}-${s()}-${s()}${s()}${s()}`;
+    this._uuid = uuid();
   }
 
   /**
