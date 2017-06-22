@@ -10,9 +10,9 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
   const newConfig = {duration: this._duration, on: {}};
 
   const wrapFunction = func => (d, i, s) => {
-    while (d.__d3plus__ && d.data) {
+    while (d.__d3plus__) {
       i = d.i;
-      d = d.data;
+      d = d.data || d.feature;
     }
     return func(d, i, s);
   };
@@ -55,7 +55,10 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
 
   keyEval(newConfig, config);
   if (this._on) parseEvents(newConfig, this._on);
-  if (nest && config[nest]) keyEval(newConfig, config[nest]);
+  if (nest && config[nest]) {
+    keyEval(newConfig, config[nest]);
+    if (config[nest].on) parseEvents(newConfig, config[nest].on);
+  }
 
   return newConfig;
 
