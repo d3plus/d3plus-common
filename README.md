@@ -287,4 +287,4 @@ This is a global function.
 
 ---
 
-###### <sub>Documentation generated on Thu, 22 Jun 2017 16:28:00 GMT</sub>
+###### <sub>Documentation generated on Tue, 27 Jun 2017 21:27:54 GMT</sub>
