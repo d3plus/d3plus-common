@@ -11,3 +11,4 @@ export {default as locale} from "./src/locale";
 export {default as merge} from "./src/merge";
 export {default as prefix} from "./src/prefix";
 export {default as stylize} from "./src/stylize";
+export {default as uuid} from "./src/uuid";
