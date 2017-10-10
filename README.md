@@ -45,20 +45,21 @@ This is a global class.
     * [.config([*value*])](#BaseClass.config) ↩︎
     * [.on([*typenames*], [*listener*])](#BaseClass.on) ↩︎
 
-<a name="BaseClass.config" href="BaseClass.config">#</a> BaseClass.**config**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L25)
+
+<a name="BaseClass.config" href="#BaseClass.config">#</a> BaseClass.**config**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L25)
 
 If *value* is specified, sets the methods that correspond to the key/value pairs and returns this class. If *value* is not specified, returns the current configuration.
 
 
 This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainable with other methods of this Class.
 
-<a name="BaseClass.on" href="BaseClass.on">#</a> BaseClass.**on**([*typenames*], [*listener*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L52)
+
+<a name="BaseClass.on" href="#BaseClass.on">#</a> BaseClass.**on**([*typenames*], [*listener*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L52)
 
 Adds or removes a *listener* to each object for the specified event *typenames*. If a *listener* is not specified, returns the currently assigned listener for the specified event *typename*. Mirrors the core [d3-selection](https://github.com/d3/d3-selection#selection_on) behavior.
 
 
 This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainable with other methods of this Class.
-
 
 | Param | Type |
 | --- | --- |
@@ -66,6 +67,7 @@ This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainabl
 | [*listener*] | <code>function</code> | 
 
 By default, listeners apply globally to all objects, however, passing a namespace with the class name gives control over specific elements:
+
 ```js
 new Plot
   .on("click.Shape", function(d) {
@@ -75,6 +77,7 @@ new Plot
     console.log("data for legend clicked:", d);
   })
 ```
+
 ---
 
 <a name="accessor"></a>
@@ -85,23 +88,25 @@ Wraps an object key in a simple accessor function.
 
 This is a global function.
 
-
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>String</code> | The key to be returned from each Object passed to the function. |
 | [def] | <code>\*</code> | A default value to be returned if the key is not present. |
 
 this
+
 ```js
 accessor("id");
     
 ```
 returns this
+
 ```js
 function(d) {
   return d["id"];
 }
 ```
+
 ---
 
 <a name="assign"></a>
@@ -111,16 +116,18 @@ A deeply recursive version of `Object.assign`.
 
 
 This is a global function.
-
 this
+
 ```js
 assign({id: "foo", deep: {group: "A"}}, {id: "bar", deep: {value: 20}}));
     
 ```
 returns this
+
 ```js
 {id: "bar", deep: {group: "A", value: 20}}
 ```
+
 ---
 
 <a name="attrize"></a>
@@ -131,11 +138,11 @@ Applies each key/value in an object as an attr.
 
 This is a global function.
 
-
 | Param | Type | Description |
 | --- | --- | --- |
 | elem | <code>D3selection</code> | The D3 element to apply the styles to. |
 | attrs | <code>Object</code> | An object of key/value attr pairs. |
+
 
 ---
 
@@ -147,11 +154,11 @@ Finds the closest numeric value in an array.
 
 This is a global function.
 
-
 | Param | Type | Description |
 | --- | --- | --- |
 | n | <code>Number</code> | The number value to use when searching the array. |
 | arr | <code>Array</code> | The array of values to test against. |
+
 
 ---
 
@@ -163,12 +170,12 @@ Preps a config object for d3plus data, and optionally bubbles up a specific nest
 
 This is a global function.
 
-
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [config] | <code>Object</code> | <code>this._shapeConfig</code> | The configuration object to parse. |
 | [type] | <code>String</code> | <code>&quot;shape&quot;</code> | The event classifier to user for "on" events. For example, the default event type of "shape" will apply all events in the "on" config object with that key, like "click.shape" and "mouseleave.shape", in addition to any gloval events like "click" and "mouseleave". |
 | [nest] | <code>String</code> |  | An optional nested key to bubble up to the parent config level. |
+
 
 ---
 
@@ -179,18 +186,20 @@ Wraps non-function variables in a simple return function.
 
 
 This is a global function.
-
 this
+
 ```js
 constant(42);
     
 ```
 returns this
+
 ```js
 function() {
   return 42;
 }
 ```
+
 ---
 
 <a name="elem"></a>
@@ -200,7 +209,6 @@ Manages the enter/update/exit pattern for a single DOM element.
 
 
 This is a global function.
-
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -212,6 +220,7 @@ This is a global function.
 | [params.parent] | <code>D3Selection</code> | <code>d3.select(&quot;body&quot;)</code> | The parent element for this new element to be appended to. |
 | [params.transition] | <code>D3Transition</code> | <code>d3.transition().duration(0)</code> | The transition to use when animated the different life cycle stages. |
 | [params.update] | <code>Object</code> | <code>{}</code> | A collection of key/value pairs that map to attributes to be given on update. |
+
 
 ---
 
@@ -233,13 +242,13 @@ Combines an Array of Objects together and returns a new Object.
 
 This is a global function.
 
-
 | Param | Type | Description |
 | --- | --- | --- |
 | objects | <code>Array</code> | The Array of objects to be merged together. |
 | aggs | <code>Object</code> | An object containing specific aggregation methods (functions) for each key type. By default, numbers are summed and strings are returned as an array of unique values. |
 
 this
+
 ```js
 merge([
   {id: "foo", group: "A", value: 10, links: [1, 2]},
@@ -248,9 +257,11 @@ merge([
     
 ```
 returns this
+
 ```js
 {id: ["bar", "foo"], group: "A", value: 30, links: [1, 2, 3]}
 ```
+
 ---
 
 <a name="prefix"></a>
@@ -271,11 +282,11 @@ Applies each key/value in an object as a style.
 
 This is a global function.
 
-
 | Param | Type | Description |
 | --- | --- | --- |
 | elem | <code>D3selection</code> | The D3 element to apply the styles to. |
 | styles | <code>Object</code> | An object of key/value style pairs. |
+
 
 ---
 
@@ -287,4 +298,6 @@ This is a global function.
 
 ---
 
-###### <sub>Documentation generated on Tue, 27 Jun 2017 21:27:54 GMT</sub>
+
+
+###### <sub>Documentation generated on Tue, 10 Oct 2017 19:45:39 GMT</sub>
