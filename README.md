@@ -300,4 +300,4 @@ This is a global function.
 
 
 
-###### <sub>Documentation generated on Tue, 10 Oct 2017 19:45:39 GMT</sub>
+###### <sub>Documentation generated on Thu, 16 Nov 2017 02:08:31 GMT</sub>
