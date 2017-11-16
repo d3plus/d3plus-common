@@ -7,7 +7,6 @@ export {default as configPrep} from "./src/configPrep";
 export {default as constant} from "./src/constant";
 export {default as elem} from "./src/elem";
 export {default as isObject} from "./src/isObject";
-export {default as locale} from "./src/locale";
 export {default as merge} from "./src/merge";
 export {default as prefix} from "./src/prefix";
 export {default as stylize} from "./src/stylize";
