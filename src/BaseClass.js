@@ -1,4 +1,5 @@
 import uuid from "./uuid";
+import RESET from "./RESET";
 
 /**
     @class BaseClass
@@ -23,8 +24,21 @@ export default class BaseClass {
       @chainable
   */
   config(_) {
+    if (!this._configDefault) {
+      const config = {};
+      for (const k in this.__proto__) if (k.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(k)) config[k] = this[k]();
+      this._configDefault = config;
+    }
     if (arguments.length) {
-      for (const k in _) if ({}.hasOwnProperty.call(_, k) && k in this) this[k](_[k]);
+      for (const k in _) {
+        if ({}.hasOwnProperty.call(_, k) && k in this) {
+          if (_[k] === RESET) {
+            if (k === "on") this._on = this._configDefault[k];
+            else this[k](this._configDefault[k]);
+          }
+          else this[k](_[k]);
+        }
+      }
       return this;
     }
     else {

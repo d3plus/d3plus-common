@@ -9,5 +9,6 @@ export {default as elem} from "./src/elem";
 export {default as isObject} from "./src/isObject";
 export {default as merge} from "./src/merge";
 export {default as prefix} from "./src/prefix";
+export {default as RESET} from "./src/RESET";
 export {default as stylize} from "./src/stylize";
 export {default as uuid} from "./src/uuid";
