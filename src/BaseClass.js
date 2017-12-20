@@ -1,5 +1,28 @@
+import assign from "./assign";
+import isObject from "./isObject";
 import uuid from "./uuid";
 import RESET from "./RESET";
+
+/**
+    @desc Recursive function that resets nested Object configs.
+    @param {Object} obj
+    @param {Object} defaults
+    @private
+*/
+function nestedReset(obj, defaults) {
+  if (isObject(obj)) {
+    for (const nestedKey in obj) {
+      if ({}.hasOwnProperty.call(obj, nestedKey)) {
+        if (obj[nestedKey] === RESET) {
+          obj[nestedKey] = defaults[nestedKey];
+        }
+        else if (isObject(obj[nestedKey])) {
+          nestedReset(obj[nestedKey], defaults[nestedKey]);
+        }
+      }
+    }
+  }
+}
 
 /**
     @class BaseClass
@@ -26,17 +49,26 @@ export default class BaseClass {
   config(_) {
     if (!this._configDefault) {
       const config = {};
-      for (const k in this.__proto__) if (k.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(k)) config[k] = this[k]();
+      for (const k in this.__proto__) {
+        if (k.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(k)) {
+          const v = this[k]();
+          config[k] = isObject(v) ? assign({}, v) : v;
+        }
+      }
       this._configDefault = config;
     }
     if (arguments.length) {
       for (const k in _) {
         if ({}.hasOwnProperty.call(_, k) && k in this) {
-          if (_[k] === RESET) {
+          const v = _[k];
+          if (v === RESET) {
             if (k === "on") this._on = this._configDefault[k];
             else this[k](this._configDefault[k]);
           }
-          else this[k](_[k]);
+          else {
+            nestedReset(v, this._configDefault[k]);
+            this[k](v);
+          }
         }
       }
       return this;
