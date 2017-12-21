@@ -15,10 +15,10 @@ If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the 
 
 ## API Reference
 
-##### Classes
+##### 
 * [BaseClass](#BaseClass) - An abstract class that contains some global methods and functionality.
 
-##### Functions
+##### 
 * [accessor](#accessor) - Wraps an object key in a simple accessor function.
 * [assign](#assign) - A deeply recursive version of `Object.assign`.
 * [attrize](#attrize) - Applies each key/value in an object as an attr.
@@ -32,7 +32,7 @@ If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the 
 * [stylize](#stylize) - Applies each key/value in an object as a style.
 * [uuid](#uuid) - Returns a unique identifier.
 
-##### Constants
+##### 
 * [RESET](#RESET) - String constant used to reset an individual config property.
 
 ---
@@ -313,4 +313,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Wed, 20 Dec 2017 18:38:13 GMT</sub>
+###### <sub>Documentation generated on Thu, 21 Dec 2017 19:48:47 GMT</sub>
