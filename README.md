@@ -313,4 +313,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Thu, 21 Dec 2017 19:48:47 GMT</sub>
+###### <sub>Documentation generated on Thu, 21 Dec 2017 20:03:41 GMT</sub>
