@@ -13,11 +13,12 @@ function nestedReset(obj, defaults) {
   if (isObject(obj)) {
     for (const nestedKey in obj) {
       if ({}.hasOwnProperty.call(obj, nestedKey)) {
+        const defaultValue = defaults && isObject(defaults) ? defaults[nestedKey] : undefined;
         if (obj[nestedKey] === RESET) {
-          obj[nestedKey] = defaults[nestedKey];
+          obj[nestedKey] = defaultValue;
         }
         else if (isObject(obj[nestedKey])) {
-          nestedReset(obj[nestedKey], defaults[nestedKey]);
+          nestedReset(obj[nestedKey], defaultValue);
         }
       }
     }
