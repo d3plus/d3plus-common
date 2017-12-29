@@ -12,7 +12,7 @@ import RESET from "./RESET";
 function nestedReset(obj, defaults) {
   if (isObject(obj)) {
     for (const nestedKey in obj) {
-      if ({}.hasOwnProperty.call(obj, nestedKey)) {
+      if ({}.hasOwnProperty.call(obj, nestedKey) && !nestedKey.startsWith("_")) {
         const defaultValue = defaults && isObject(defaults) ? defaults[nestedKey] : undefined;
         if (obj[nestedKey] === RESET) {
           obj[nestedKey] = defaultValue;
