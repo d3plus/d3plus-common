@@ -1,9 +1,10 @@
-import zora from "zora";
+import test from "zora";
 import {default as prefix} from "../src/prefix.js";
 
-export default zora()
-  .test("prefix", assert => {
+test("prefix", assert => {
 
-    assert.equal(prefix(), "-webkit-", "Webkit");
+  assert.equal(prefix(), "-webkit-", "Webkit");
 
-  });
+});
+
+export default test;
