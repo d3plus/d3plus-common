@@ -16,7 +16,7 @@ export default function(sides) {
     "bottom",
     "left"
   ].reduce((acc, direction, i) => {
-    acc[direction] = values[i];
+    acc[direction] = parseFloat(values[i]);
     return acc;
   }, {});
 }
