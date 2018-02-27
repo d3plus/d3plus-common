@@ -8,6 +8,7 @@ export {default as constant} from "./src/constant";
 export {default as elem} from "./src/elem";
 export {default as isObject} from "./src/isObject";
 export {default as merge} from "./src/merge";
+export {default as parseSides} from "./src/parseSides";
 export {default as prefix} from "./src/prefix";
 export {default as RESET} from "./src/RESET";
 export {default as stylize} from "./src/stylize";
