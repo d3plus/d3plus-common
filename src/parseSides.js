@@ -1,10 +1,10 @@
 /**
- @function expandDirectionalCssShorthand
+ @function parseSides
  @desc Converts a string of directional CSS shorthand values into an object with the values expanded.
- @param {String} shorthand The CSS shorthand string to expand.
+ @param {String} sides The CSS shorthand string to expand.
  */
-export default function(shorthand) {
-  let values = shorthand.split(/\s+/);
+export default function(sides) {
+  let values = sides.split(/\s+/);
 
   if (values.length === 1) values = [values[0], values[0], values[0], values[0]];
   else if (values.length === 2) values = values.concat(values);
