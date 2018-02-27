@@ -1,6 +1,6 @@
 # d3plus-common
 
-[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common) [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat)](https://gitter.im/d3plus/)
+[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common) [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/) 
 
 Common functions and methods used across D3plus modules.
 
@@ -28,6 +28,7 @@ If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the 
 * [elem](#elem) - Manages the enter/update/exit pattern for a single DOM element.
 * [isObject](#isObject) - Detects if a variable is a javascript Object.
 * [merge](#merge) - Combines an Array of Objects together and returns a new Object.
+* [parseSides](#parseSides) - Converts a string of directional CSS shorthand values into an object with the values expanded.
 * [prefix](#prefix) - Returns the appropriate CSS vendor prefix, given the current browser.
 * [stylize](#stylize) - Applies each key/value in an object as a style.
 * [uuid](#uuid) - Returns a unique identifier.
@@ -267,6 +268,16 @@ returns this
 
 ---
 
+<a name="parseSides"></a>
+#### d3plus.**parseSides**(sides) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/parseSides.js#L1)
+
+Converts a string of directional CSS shorthand values into an object with the values expanded.
+
+
+This is a global function.
+
+---
+
 <a name="prefix"></a>
 #### d3plus.**prefix**() [<>](https://github.com/d3plus/d3plus-common/blob/master/src/prefix.js#L1)
 
@@ -313,4 +324,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Fri, 29 Dec 2017 15:45:57 GMT</sub>
+###### <sub>Documentation generated on Tue, 27 Feb 2018 17:34:47 GMT</sub>
