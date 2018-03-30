@@ -22,9 +22,8 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
     for (const event in on) {
 
       if ({}.hasOwnProperty.call(on, event) && !event.includes(".") || event.includes(`.${type}`)) {
-
-        newObj.on[event] = wrapFunction(on[event]);
-
+        const eventName = event.replace("click", "click touchstart");
+        newObj.on[eventName] = wrapFunction(on[event]);
       }
 
     }
