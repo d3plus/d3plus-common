@@ -1,6 +1,6 @@
 # d3plus-common
 
-[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common) [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/) 
+[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common) [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/) [![1.0 progress](https://img.shields.io/badge/1.0_progress-0%25-red.svg?style=flat)](https://github.com/d3plus/d3plus-common/projects/1)
 
 Common functions and methods used across D3plus modules.
 
@@ -324,4 +324,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Fri, 30 Mar 2018 18:03:19 GMT</sub>
+###### <sub>Documentation generated on Thu, 12 Apr 2018 20:10:48 GMT</sub>
