@@ -14,16 +14,15 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
       i = d.i;
       d = d.data || d.feature;
     }
-    return func(d, i, s);
+    return func.bind(this)(d, i, s);
   };
 
   const parseEvents = (newObj, on) => {
 
     for (const event in on) {
 
-      if ({}.hasOwnProperty.call(on, event) && !event.includes(".") || event.includes(`.${type}`) || event.includes(".all")) {
-        const eventName = event.replace(/click(\.[a-z]*)/g, "click$1 touchstart$1");
-        newObj.on[eventName] = wrapFunction(on[event]);
+      if ({}.hasOwnProperty.call(on, event) && !event.includes(".") || event.includes(`.${type}`)) {
+        newObj.on[event] = wrapFunction(on[event]);
       }
 
     }
