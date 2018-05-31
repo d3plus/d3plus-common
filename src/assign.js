@@ -2,6 +2,17 @@ import {default as isObject} from "./isObject";
 
 /**
     @function assign
+    @desc Determines if the object passed is the document or window.
+    @param {Object} obj
+    @private
+*/
+function validObject(obj) {
+  if (typeof window === "undefined") return true;
+  else return obj !== window && obj !== document;
+}
+
+/**
+    @function assign
     @desc A deeply recursive version of `Object.assign`.
     @param {...Object} objects
     @example <caption>this</caption>
@@ -20,7 +31,7 @@ function assign(...objects) {
 
       const value = source[prop];
 
-      if (isObject(value) && (typeof window === undefined || value !== window)) {
+      if (isObject(value) && validObject(value)) {
         if (target.hasOwnProperty(prop) && isObject(target[prop])) target[prop] = assign({}, target[prop], value);
         else target[prop] = assign({}, value);
       }
