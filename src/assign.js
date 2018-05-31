@@ -20,7 +20,7 @@ function assign(...objects) {
 
       const value = source[prop];
 
-      if (isObject(value)) {
+      if (isObject(value) && (typeof window === undefined || value !== window)) {
         if (target.hasOwnProperty(prop) && isObject(target[prop])) target[prop] = assign({}, target[prop], value);
         else target[prop] = assign({}, value);
       }
