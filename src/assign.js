@@ -21,10 +21,8 @@ function assign(...objects) {
       const value = source[prop];
 
       if (isObject(value)) {
-
         if (target.hasOwnProperty(prop) && isObject(target[prop])) target[prop] = assign({}, target[prop], value);
-        else target[prop] = value;
-
+        else target[prop] = assign({}, value);
       }
       else if (Array.isArray(value)) {
 
