@@ -114,7 +114,7 @@ function(d) {
 ---
 
 <a name="assign"></a>
-#### d3plus.**assign**(...objects) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/assign.js#L3)
+#### d3plus.**assign**(...objects) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/assign.js#L14)
 
 A deeply recursive version of `Object.assign`.
 
@@ -324,4 +324,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Thu, 31 May 2018 18:54:02 GMT</sub>
+###### <sub>Documentation generated on Thu, 31 May 2018 19:05:20 GMT</sub>
