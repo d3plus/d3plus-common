@@ -1,7 +1,7 @@
 import {default as isObject} from "./isObject";
 
 /**
-    @function assign
+    @function validObject
     @desc Determines if the object passed is the document or window.
     @param {Object} obj
     @private
