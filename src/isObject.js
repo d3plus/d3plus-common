@@ -4,5 +4,10 @@
     @param {*} item
 */
 export default function(item) {
-  return item && typeof item === "object" && !Array.isArray(item) && item !== void 0 ? true : false;
+  return item &&
+    typeof item === "object" &&
+    (typeof window === "undefined" || item !== window && item !== window.document) &&
+    !(item instanceof Element) &&
+    !Array.isArray(item)
+    ? true : false;
 }
