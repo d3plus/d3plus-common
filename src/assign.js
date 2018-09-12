@@ -48,7 +48,7 @@ function assign(...objects) {
 
               if (Object.is(targetItem, sourceItem)) return;
 
-              if (isObject(targetItem) && isObject(sourceItem) || Array.isArray(targetItem) && Array.isArray(sourceItem)) {
+              if (isObject(targetItem) && isObject(sourceItem)) {
                 targetArray[itemIndex] = assign({}, targetItem, sourceItem);
               }
               else targetArray[itemIndex] = sourceItem;
