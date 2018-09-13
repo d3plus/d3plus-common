@@ -324,4 +324,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Tue, 07 Aug 2018 01:22:32 GMT</sub>
+###### <sub>Documentation generated on Thu, 13 Sep 2018 12:58:54 GMT</sub>
