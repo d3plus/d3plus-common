@@ -35,32 +35,7 @@ function assign(...objects) {
         if (target.hasOwnProperty(prop) && isObject(target[prop])) target[prop] = assign({}, target[prop], value);
         else target[prop] = assign({}, value);
       }
-      else if (Array.isArray(value)) {
-
-        if (target.hasOwnProperty(prop) && Array.isArray(target[prop])) {
-
-          const targetArray = target[prop];
-
-          value.forEach((sourceItem, itemIndex) => {
-
-            if (itemIndex < targetArray.length) {
-              const targetItem = targetArray[itemIndex];
-
-              if (Object.is(targetItem, sourceItem)) return;
-
-              if (isObject(targetItem) && isObject(sourceItem)) {
-                targetArray[itemIndex] = assign({}, targetItem, sourceItem);
-              }
-              else targetArray[itemIndex] = sourceItem;
-
-            }
-            else targetArray.push(sourceItem);
-
-          });
-        }
-        else target[prop] = value;
-
-      }
+      else if (Array.isArray(value)) target[prop] = value.slice();
       else target[prop] = value;
 
     });
