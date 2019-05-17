@@ -10,11 +10,13 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
   const newConfig = {duration: this._duration, on: {}};
 
   const wrapFunction = func => (d, i, s) => {
+    let parent;
     while (d.__d3plus__) {
+      parent = d;
       i = d.i;
       d = d.data || d.feature;
     }
-    return func.bind(this)(d, i, s);
+    return func.bind(this)(d, i, s || parent);
   };
 
   const parseEvents = (newObj, on) => {
