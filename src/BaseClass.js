@@ -84,9 +84,20 @@ export default class BaseClass {
 
   /**
       @memberof BaseClass
-      @desc If *value* is specified, sets the locale to the specified string and returns the current class instance.
-      @param {String} [*value* = "en-US"]
+      @desc If *value* is specified, sets the locale to the specified string and returns the current class instance. This method supports the locales defined in [d3plus-format](https://github.com/d3plus/d3plus-format/blob/master/src/locale.js). In another case, you can define an Object with a custom locale.
+      @param {Object|String} [*value* = "en-US"]
       @chainable
+      @example
+      {
+        separator: "",
+        suffixes: ["y", "z", "a", "f", "p", "n", "µ", "m", "", "k", "M", "B", "t", "q", "Q", "Z", "Y"],
+        grouping: [3],
+        delimiters: {
+          thousands: ",",
+          decimal: "."
+        },
+        currency: ["$", ""]
+      }
   */
   locale(_) {
     return arguments.length ? (this._locale = _, this) : this._locale;
