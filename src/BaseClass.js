@@ -37,6 +37,7 @@ export default class BaseClass {
       @private
   */
   constructor() {
+    this._locale = "en-US";
     this._on = {};
     this._uuid = uuid();
   }
@@ -79,6 +80,16 @@ export default class BaseClass {
       for (const k in this.__proto__) if (k.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(k)) config[k] = this[k]();
       return config;
     }
+  }
+
+  /**
+      @memberof BaseClass
+      @desc If *value* is specified, sets the locale to the specified string and returns the current class instance.
+      @param {String} [*value* = "en-US"]
+      @chainable
+  */
+  locale(_) {
+    return arguments.length ? (this._locale = _, this) : this._locale;
   }
 
   /**
