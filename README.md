@@ -1,6 +1,6 @@
 # d3plus-common
 
-[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common) [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/) [![1.0 progress](https://img.shields.io/badge/1.0_progress-50%25-orange.svg?style=flat)](https://github.com/d3plus/d3plus-common/projects/1)
+[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common) [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/) [![1.0 progress](https://img.shields.io/badge/1.0_progress-100%25-brightgreen.svg?style=flat)](https://github.com/d3plus/d3plus-common/projects/1)
 
 Common functions and methods used across D3plus modules.
 
@@ -47,10 +47,11 @@ This is a global class.
 
 * [BaseClass](#BaseClass)
     * [.config([*value*])](#BaseClass.config) ↩︎
+    * [.locale([*value*])](#BaseClass.locale) ↩︎
     * [.on([*typenames*], [*listener*])](#BaseClass.on) ↩︎
 
 
-<a name="BaseClass.config" href="#BaseClass.config">#</a> BaseClass.**config**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L50)
+<a name="BaseClass.config" href="#BaseClass.config">#</a> BaseClass.**config**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L51)
 
 If *value* is specified, sets the methods that correspond to the key/value pairs and returns this class. If *value* is not specified, returns the current configuration.
 
@@ -58,7 +59,29 @@ If *value* is specified, sets the methods that correspond to the key/value pairs
 This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainable with other methods of this Class.
 
 
-<a name="BaseClass.on" href="#BaseClass.on">#</a> BaseClass.**on**([*typenames*], [*listener*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L99)
+<a name="BaseClass.locale" href="#BaseClass.locale">#</a> BaseClass.**locale**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L102)
+
+If *value* is specified, sets the locale to the specified string and returns the current class instance. This method supports the locales defined in [d3plus-format](https://github.com/d3plus/d3plus-format/blob/master/src/locale.js). In another case, you can define an Object with a custom locale.
+
+
+This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainable with other methods of this Class.
+
+
+```js
+{
+        separator: "",
+        suffixes: ["y", "z", "a", "f", "p", "n", "µ", "m", "", "k", "M", "B", "t", "q", "Q", "Z", "Y"],
+        grouping: [3],
+        delimiters: {
+          thousands: ",",
+          decimal: "."
+        },
+        currency: ["$", ""]
+      }
+```
+
+
+<a name="BaseClass.on" href="#BaseClass.on">#</a> BaseClass.**on**([*typenames*], [*listener*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L121)
 
 Adds or removes a *listener* to each object for the specified event *typenames*. If a *listener* is not specified, returns the currently assigned listener for the specified event *typename*. Mirrors the core [d3-selection](https://github.com/d3/d3-selection#selection_on) behavior.
 
@@ -324,4 +347,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Fri, 17 May 2019 15:10:24 GMT</sub>
+###### <sub>Documentation generated on Fri, 31 May 2019 16:59:30 GMT</sub>
