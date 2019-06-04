@@ -32,6 +32,13 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
 
   };
 
+  const arrayEval = arr => arr.map(d => {
+    if (d instanceof Array) return arrayEval(d);
+    else if (typeof d === "object") return keyEval({}, d);
+    else if (typeof d === "function") return wrapFunction(d);
+    else return d;
+  });
+
   const keyEval = (newObj, obj) => {
 
     for (const key in obj) {
@@ -42,7 +49,10 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
         else if (typeof obj[key] === "function") {
           newObj[key] = wrapFunction(obj[key]);
         }
-        else if (typeof obj[key] === "object" && !(obj instanceof Array)) {
+        else if (obj[key] instanceof Array) {
+          newObj[key] = arrayEval(obj[key]);
+        }
+        else if (typeof obj[key] === "object") {
           newObj[key] = {on: {}};
           keyEval(newObj[key], obj[key]);
         }
