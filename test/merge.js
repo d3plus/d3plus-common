@@ -1,4 +1,4 @@
-import test from "zora";
+import {test} from "zora";
 import {default as merge} from "../src/merge.js";
 
 test("merge", assert => {

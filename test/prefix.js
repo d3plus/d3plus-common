@@ -1,4 +1,4 @@
-import test from "zora";
+import {test} from "zora";
 import {default as prefix} from "../src/prefix.js";
 
 test("prefix", assert => {

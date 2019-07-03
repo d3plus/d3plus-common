@@ -1,4 +1,4 @@
-import test from "zora";
+import {test} from "zora";
 import {default as closest} from "../src/closest.js";
 
 test("closest", assert => {

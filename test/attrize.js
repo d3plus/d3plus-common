@@ -1,4 +1,4 @@
-import test from "zora";
+import {test} from "zora";
 import {default as attrize} from "../src/attrize.js";
 import {select} from "d3-selection";
 

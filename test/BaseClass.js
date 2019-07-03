@@ -1,4 +1,4 @@
-import test from "zora";
+import {test} from "zora";
 import {default as BaseClass} from "../src/BaseClass.js";
 
 test("BaseClass", assert => {

@@ -1,4 +1,4 @@
-import test from "zora";
+import {test} from "zora";
 import {default as stylize} from "../src/stylize.js";
 import {select} from "d3-selection";
 

@@ -1,4 +1,4 @@
-import test from "zora";
+import {test} from "zora";
 import {default as assign} from "../src/assign.js";
 
 test("assign", assert => {

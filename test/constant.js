@@ -1,4 +1,4 @@
-import test from "zora";
+import {test} from "zora";
 import {default as constant} from "../src/constant.js";
 
 test("constant", assert => {
