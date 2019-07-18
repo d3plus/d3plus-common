@@ -15,7 +15,7 @@ merge([
     @example <caption>returns this</caption>
 {id: ["bar", "foo"], group: "A", value: 30, links: [1, 2, 3]}
 */
-export default function(objects, aggs = {}) {
+function objectMerge(objects, aggs = {}) {
 
   const availableKeys = unique(merge(objects.map(o => keys(o)))),
         newObject = {};
@@ -49,3 +49,5 @@ export default function(objects, aggs = {}) {
   return newObject;
 
 }
+
+export default objectMerge;
