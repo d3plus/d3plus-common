@@ -31,6 +31,7 @@ If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the 
 * [parseSides](#parseSides) - Converts a string of directional CSS shorthand values into an object with the values expanded.
 * [prefix](#prefix) - Returns the appropriate CSS vendor prefix, given the current browser.
 * [stylize](#stylize) - Applies each key/value in an object as a style.
+* [unique](#unique) - ES5 implementation to reduce an Array of values to unique instances.
 * [uuid](#uuid) - Returns a unique identifier.
 
 ##### 
@@ -262,7 +263,7 @@ This is a global function.
 ---
 
 <a name="merge"></a>
-#### d3plus.**merge**(objects, aggs) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/merge.js#L4)
+#### d3plus.**merge**(objects, aggs) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/merge.js#L5)
 
 Combines an Array of Objects together and returns a new Object.
 
@@ -327,6 +328,27 @@ This is a global function.
 
 ---
 
+<a name="unique"></a>
+#### d3plus.**unique**(objects) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/unique.js#L1)
+
+ES5 implementation to reduce an Array of values to unique instances.
+
+
+This is a global function.
+this
+
+```js
+unique(["apple", "banana", "apple"]);
+    
+```
+returns this
+
+```js
+["apple", "banana"]
+```
+
+---
+
 <a name="uuid"></a>
 #### d3plus.**uuid**() [<>](https://github.com/d3plus/d3plus-common/blob/master/src/uuid.js#L10)
 
@@ -347,4 +369,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Thu, 11 Jul 2019 13:04:04 GMT</sub>
+###### <sub>Documentation generated on Thu, 18 Jul 2019 17:52:53 GMT</sub>
