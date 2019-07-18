@@ -1,5 +1,6 @@
 import {merge, sum} from "d3-array";
 import {keys} from "d3-collection";
+import unique from "./unique";
 
 /**
     @function merge
@@ -14,9 +15,9 @@ merge([
     @example <caption>returns this</caption>
 {id: ["bar", "foo"], group: "A", value: 30, links: [1, 2, 3]}
 */
-function objectMerge(objects, aggs = {}) {
+export default function(objects, aggs = {}) {
 
-  const availableKeys = new Set(merge(objects.map(o => keys(o)))),
+  const availableKeys = unique(merge(objects.map(o => keys(o)))),
         newObject = {};
 
   availableKeys.forEach(k => {
@@ -28,17 +29,17 @@ function objectMerge(objects, aggs = {}) {
       if (!types.length) value = undefined;
       else if (types.indexOf(Array) >= 0) {
         value = merge(values.map(v => v instanceof Array ? v : [v]));
-        value = Array.from(new Set(value));
+        value = unique(value);
         if (value.length === 1) value = value[0];
       }
       else if (types.indexOf(String) >= 0) {
-        value = Array.from(new Set(values));
+        value = unique(values);
         if (value.length === 1) value = value[0];
       }
       else if (types.indexOf(Number) >= 0) value = sum(values);
       else if (types.indexOf(Object) >= 0) value = objectMerge(values.filter(v => v));
       else {
-        value = Array.from(new Set(values.filter(v => v !== void 0)));
+        value = unique(values.filter(v => v !== void 0));
         if (value.length === 1) value = value[0];
       }
     }
@@ -48,5 +49,3 @@ function objectMerge(objects, aggs = {}) {
   return newObject;
 
 }
-
-export default objectMerge;
