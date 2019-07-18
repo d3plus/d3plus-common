@@ -12,4 +12,5 @@ export {default as parseSides} from "./src/parseSides";
 export {default as prefix} from "./src/prefix";
 export {default as RESET} from "./src/RESET";
 export {default as stylize} from "./src/stylize";
+export {default as unique} from "./src/unique";
 export {default as uuid} from "./src/uuid";
