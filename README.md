@@ -40,7 +40,7 @@ If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the 
 ---
 
 <a name="BaseClass"></a>
-#### **BaseClass** [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L28)
+#### **BaseClass** [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L29)
 
 
 This is a global class.
@@ -52,7 +52,7 @@ This is a global class.
     * [.on([*typenames*], [*listener*])](#BaseClass.on) ↩︎
 
 
-<a name="BaseClass.config" href="#BaseClass.config">#</a> BaseClass.**config**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L51)
+<a name="BaseClass.config" href="#BaseClass.config">#</a> BaseClass.**config**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L52)
 
 If *value* is specified, sets the methods that correspond to the key/value pairs and returns this class. If *value* is not specified, returns the current configuration.
 
@@ -60,9 +60,9 @@ If *value* is specified, sets the methods that correspond to the key/value pairs
 This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainable with other methods of this Class.
 
 
-<a name="BaseClass.locale" href="#BaseClass.locale">#</a> BaseClass.**locale**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L102)
+<a name="BaseClass.locale" href="#BaseClass.locale">#</a> BaseClass.**locale**([*value*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L103)
 
-If *value* is specified, sets the locale to the specified string and returns the current class instance. This method supports the locales defined in [d3plus-format](https://github.com/d3plus/d3plus-format/blob/master/src/locale.js). In another case, you can define an Object with a custom locale.
+Sets the locale used for all text and number formatting. This method supports the locales defined in [d3plus-format](https://github.com/d3plus/d3plus-format/blob/master/src/locale.js). The locale can be defined as a complex Object (like in d3plus-format), a locale code (like "en-US"), or a 2-digit language code (like "en"). If a 2-digit code is provided, the "findLocale" function is used to identify the most approximate locale from d3plus-format.
 
 
 This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainable with other methods of this Class.
@@ -82,7 +82,7 @@ This is a static method of [<code>BaseClass</code>](#BaseClass), and is chainabl
 ```
 
 
-<a name="BaseClass.on" href="#BaseClass.on">#</a> BaseClass.**on**([*typenames*], [*listener*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L121)
+<a name="BaseClass.on" href="#BaseClass.on">#</a> BaseClass.**on**([*typenames*], [*listener*]) [<>](https://github.com/d3plus/d3plus-common/blob/master/src/BaseClass.js#L122)
 
 Adds or removes a *listener* to each object for the specified event *typenames*. If a *listener* is not specified, returns the currently assigned listener for the specified event *typename*. Mirrors the core [d3-selection](https://github.com/d3/d3-selection#selection_on) behavior.
 
@@ -369,4 +369,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Thu, 18 Jul 2019 17:52:53 GMT</sub>
+###### <sub>Documentation generated on Thu, 25 Jul 2019 17:04:20 GMT</sub>
