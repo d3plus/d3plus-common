@@ -1,4 +1,5 @@
 import assign from "./assign";
+import findLocale from "./findLocale";
 import isObject from "./isObject";
 import uuid from "./uuid";
 import RESET from "./RESET";
@@ -84,7 +85,7 @@ export default class BaseClass {
 
   /**
       @memberof BaseClass
-      @desc If *value* is specified, sets the locale to the specified string and returns the current class instance. This method supports the locales defined in [d3plus-format](https://github.com/d3plus/d3plus-format/blob/master/src/locale.js). In another case, you can define an Object with a custom locale.
+      @desc Sets the locale used for all text and number formatting. This method supports the locales defined in [d3plus-format](https://github.com/d3plus/d3plus-format/blob/master/src/locale.js). The locale can be defined as a complex Object (like in d3plus-format), a locale code (like "en-US"), or a 2-digit language code (like "en"). If a 2-digit code is provided, the "findLocale" function is used to identify the most approximate locale from d3plus-format.
       @param {Object|String} [*value* = "en-US"]
       @chainable
       @example
@@ -100,7 +101,7 @@ export default class BaseClass {
       }
   */
   locale(_) {
-    return arguments.length ? (this._locale = _, this) : this._locale;
+    return arguments.length ? (this._locale = findLocale(_), this) : this._locale;
   }
 
   /**

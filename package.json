@@ -34,7 +34,8 @@
     "d3-array": "^1.2.4",
     "d3-collection": "^1.0.7",
     "d3-selection": "^1.4.0",
-    "d3-transition": "^1.2.0"
+    "d3-transition": "^1.2.0",
+    "locale-codes": "^1.0.1"
   },
   "devDependencies": {
     "d3plus-dev": "^0.7.2"
