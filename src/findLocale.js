@@ -1,5 +1,24 @@
-import {all as localeList} from "locale-codes";
-const locales = localeList.filter(d => d.location && d["iso639-1"]);
+import lcid from "windows-locale";
+import iso from "iso639-codes";
+
+const locales = [];
+const isoKeys = Object.keys(iso);
+
+Object.keys(lcid).map(id => {
+  const locale = lcid[id];
+  const isoLanguage = isoKeys.find(name => name.toLowerCase() === locale.language.toLowerCase());
+  if (locale.location && isoLanguage) {
+    locales.push({
+      ["name"]: locale.language,
+      ["location"]: locale.location,
+      ["tag"]: locale.tag,
+      ["lcid"]: locale.id,
+      ["iso639-2"]: iso[isoLanguage]["iso639-2"],
+      ["iso639-1"]: iso[isoLanguage]["iso639-1"]
+    });
+  }
+});
+
 const defaultLocales = {
   ar: "ar-SA",
   ca: "ca-ES",
