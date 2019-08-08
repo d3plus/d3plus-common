@@ -37,7 +37,12 @@ function objectMerge(objects, aggs = {}) {
         if (value.length === 1) value = value[0];
       }
       else if (types.indexOf(Number) >= 0) value = sum(values);
-      else if (types.indexOf(Object) >= 0) value = objectMerge(values.filter(v => v));
+      else if (types.indexOf(Object) >= 0) {
+        value = unique(values.filter(v => v));
+        if (value.length === 1) value = value[0];
+        else value = objectMerge(value);
+
+      }
       else {
         value = unique(values.filter(v => v !== void 0));
         if (value.length === 1) value = value[0];
