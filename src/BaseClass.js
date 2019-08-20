@@ -4,6 +4,8 @@ import isObject from "./isObject";
 import uuid from "./uuid";
 import RESET from "./RESET";
 
+import dictionaries from "./locales/index";
+
 /**
     @desc Recursive function that resets nested Object configs.
     @param {Object} obj
@@ -40,6 +42,10 @@ export default class BaseClass {
   constructor() {
     this._locale = "en-US";
     this._on = {};
+    this._translate = (d, locale = this._locale) => {
+      const dictionary = dictionaries[locale];
+      return dictionary && dictionary[d] ? dictionary[d] : d;
+    };
     this._uuid = uuid();
   }
 
@@ -121,6 +127,20 @@ new Plot
   */
   on(_, f) {
     return arguments.length === 2 ? (this._on[_] = f, this) : arguments.length ? typeof _ === "string" ? this._on[_] : (this._on = Object.assign({}, this._on, _), this) : this._on;
+  }
+
+  /**
+      @memberof BaseClass
+      @desc Defines how informational text strings should be displayed. By default, this function will try to find the string in question (which is the first argument provided to this function) inside of an internally managed translation Object. If you'd like to override to use custom text, simply pass this method your own custom formatting function.
+      @param {Function} [*value*]
+      @chainable
+      @example <caption>For example, if we wanted to only change the string "Back" and allow all other string to return in English:</caption>
+.translate(function(d) {
+  return d === "Back" ? "Get outta here" : d;
+})
+  */
+  translate(_) {
+    return arguments.length ? (this._translate = _, this) : this._translate;
   }
 
 }
