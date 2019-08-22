@@ -9,7 +9,7 @@ export default {
   "Loading Visualization": "Cargando Visualización",
   "No Data Available": "Datos No Disponibles",
   "Powered by D3plus": "Funciona con D3plus",
-  "Share": "Compartir",
+  "Share": "Porcentaje",
   "Shift+Click to Hide": "Mayús+Clic para Ocultar",
   "Total": "Total",
   "Values": "Valores"
