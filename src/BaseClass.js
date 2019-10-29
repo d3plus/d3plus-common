@@ -29,6 +29,20 @@ function nestedReset(obj, defaults) {
 }
 
 /**
+ * @desc finds all prototype methods of a class and it's parent classes
+ * @param {*} obj
+ * @private
+ */
+function getAllMethods(obj) {
+  let props = [];
+  do {
+    props = props.concat(Object.getOwnPropertyNames(obj));
+    obj = Object.getPrototypeOf(obj);
+  } while (obj);
+  return props.filter(e => e.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(e));
+}
+
+/**
     @class BaseClass
     @summary An abstract class that contains some global methods and functionality.
 */
@@ -56,16 +70,16 @@ export default class BaseClass {
       @chainable
   */
   config(_) {
+
     if (!this._configDefault) {
       const config = {};
-      for (const k in this.__proto__) {
-        if (k.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(k)) {
-          const v = this[k]();
-          config[k] = isObject(v) ? assign({}, v) : v;
-        }
-      }
+      getAllMethods(this.__proto__).forEach(k => {
+        const v = this[k]();
+        config[k] = isObject(v) ? assign({}, v) : v;
+      });
       this._configDefault = config;
     }
+
     if (arguments.length) {
       for (const k in _) {
         if ({}.hasOwnProperty.call(_, k) && k in this) {
@@ -83,9 +97,13 @@ export default class BaseClass {
       return this;
     }
     else {
+
       const config = {};
-      for (const k in this.__proto__) if (k.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(k)) config[k] = this[k]();
+      getAllMethods(this.__proto__).forEach(k => {
+        config[k] = this[k]();
+      });
       return config;
+
     }
   }
 
