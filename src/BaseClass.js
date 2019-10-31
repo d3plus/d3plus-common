@@ -38,7 +38,7 @@ function getAllMethods(obj) {
   do {
     props = props.concat(Object.getOwnPropertyNames(obj));
     obj = Object.getPrototypeOf(obj);
-  } while (obj);
+  } while (obj && obj !== Object.prototype);
   return props.filter(e => e.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(e));
 }
 
