@@ -18,7 +18,8 @@ function nestedReset(obj, defaults) {
       if ({}.hasOwnProperty.call(obj, nestedKey) && !nestedKey.startsWith("_")) {
         const defaultValue = defaults && isObject(defaults) ? defaults[nestedKey] : undefined;
         if (obj[nestedKey] === RESET) {
-          obj[nestedKey] = defaultValue;
+          if (defaultValue) obj[nestedKey] = defaultValue;
+          else delete obj[nestedKey];
         }
         else if (isObject(obj[nestedKey])) {
           nestedReset(obj[nestedKey], defaultValue);
@@ -159,6 +160,16 @@ new Plot
   */
   translate(_) {
     return arguments.length ? (this._translate = _, this) : this._translate;
+  }
+
+  /**
+      @memberof Viz
+      @desc If *value* is specified, sets the config method for each shape and returns the current class instance.
+      @param {Object} [*value*]
+      @chainable
+  */
+  shapeConfig(_) {
+    return arguments.length ? (this._shapeConfig = assign(this._shapeConfig, _), this) : this._shapeConfig;
   }
 
 }
