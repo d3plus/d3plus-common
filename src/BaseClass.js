@@ -40,7 +40,7 @@ function getAllMethods(obj) {
     props = props.concat(Object.getOwnPropertyNames(obj));
     obj = Object.getPrototypeOf(obj);
   } while (obj && obj !== Object.prototype);
-  return props.filter(e => e.indexOf("_") !== 0 && !["config", "constructor", "render"].includes(e));
+  return props.filter(e => e.indexOf("_") !== 0 && !["config", "constructor", "parent", "render"].includes(e));
 }
 
 /**
@@ -57,6 +57,7 @@ export default class BaseClass {
   constructor() {
     this._locale = "en-US";
     this._on = {};
+    this._parent = {};
     this._translate = (d, locale = this._locale) => {
       const dictionary = dictionaries[locale];
       return dictionary && dictionary[d] ? dictionary[d] : d;
@@ -76,7 +77,7 @@ export default class BaseClass {
       const config = {};
       getAllMethods(this.__proto__).forEach(k => {
         const v = this[k]();
-        config[k] = isObject(v) ? assign({}, v) : v;
+        if (v !== this) config[k] = isObject(v) ? assign({}, v) : v;
       });
       this._configDefault = config;
     }
@@ -146,6 +147,16 @@ new Plot
   */
   on(_, f) {
     return arguments.length === 2 ? (this._on[_] = f, this) : arguments.length ? typeof _ === "string" ? this._on[_] : (this._on = Object.assign({}, this._on, _), this) : this._on;
+  }
+
+  /**
+      @memberof Viz
+      @desc If *value* is specified, sets the parent config used by the wrapper and returns the current class instance.
+      @param {Object} [*value*]
+      @chainable
+  */
+  parent(_) {
+    return arguments.length ? (this._parent = _, this) : this._parent;
   }
 
   /**
