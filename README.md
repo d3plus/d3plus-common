@@ -9,7 +9,7 @@ Common functions and methods used across D3plus modules.
 If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-common/releases/latest). The released bundle supports AMD, CommonJS, and vanilla environments. You can also load directly from [d3plus.org](https://d3plus.org):
 
 ```html
-<script src="https://d3plus.org/js/d3plus-common.v0.6.full.min.js"></script>
+<script src="https://d3plus.org/js/d3plus-common.v0.7.full.min.js"></script>
 ```
 
 
@@ -385,4 +385,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Mon, 29 Jun 2020 19:43:56 GMT</sub>
+###### <sub>Documentation generated on Tue, 14 Jul 2020 20:20:03 GMT</sub>
