@@ -12,7 +12,7 @@ test("merge", assert => {
       id: "bar", group: "A", value: 20, agg: 1, links: [1, 3],
       bool: false, undef: undefined, null: null
     }
-  ], {agg: a => a[0]});
+  ], {agg: (a, cb) => cb(a[0])});
 
   assert.equal(obj.group, "A", "Unique String");
   assert.ok(obj.links.length === 3 && obj.links[0] === 1 && obj.links[1] === 2 && obj.links[2] === 3, "Multiple Arrays");

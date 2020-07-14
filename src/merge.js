@@ -21,10 +21,10 @@ function objectMerge(objects, aggs = {}) {
         newObject = {};
 
   availableKeys.forEach(k => {
-    const values = objects.map(o => o[k]);
     let value;
-    if (aggs[k]) value = aggs[k](values);
+    if (aggs[k]) value = aggs[k](objects, o => o[k]);
     else {
+      const values = objects.map(o => o[k]);
       const types = values.map(v => v || v === false ? v.constructor : v).filter(v => v !== void 0);
       if (!types.length) value = undefined;
       else if (types.indexOf(Array) >= 0) {
