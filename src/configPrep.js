@@ -9,7 +9,7 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
 
   const newConfig = {duration: this._duration, on: {}};
 
-  const wrapFunction = func => (d, i, s) => {
+  const wrapFunction = func => (d, i, s, e) => {
     let parent;
     while (d.__d3plus__) {
       if (parent) d.__d3plusParent__ = parent;
@@ -17,7 +17,7 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
       i = d.i;
       d = d.data || d.feature;
     }
-    return func.bind(this)(d, i, s || parent);
+    return func.bind(this)(d, i, s || parent, e);
   };
 
   const parseEvents = (newObj, on) => {
