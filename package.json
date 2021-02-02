@@ -31,15 +31,15 @@
     "test": "d3plus-test"
   },
   "dependencies": {
-    "d3-array": "^1.2.4",
+    "d3-array": "^2.11.0",
     "d3-collection": "^1.0.7",
-    "d3-selection": "^1.4.0",
-    "d3-transition": "^1.2.0",
+    "d3-selection": "^2.0.0",
+    "d3-transition": "^2.0.0",
     "iso639-codes": "^1.0.1",
     "windows-locale": "^1.0.1"
   },
   "devDependencies": {
-    "d3plus-dev": "^0.7.5"
+    "d3plus-dev": "^1.0.1"
   },
   "module": "es/index",
   "sideEffects": false,
