@@ -1,15 +1,18 @@
 # d3plus-common
 
-[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common) [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/) [![1.0 progress](https://img.shields.io/badge/1.0_progress-100%25-brightgreen.svg?style=flat)](https://github.com/d3plus/d3plus-common/projects/1)
+[![NPM Release](http://img.shields.io/npm/v/d3plus-common.svg?style=flat)](https://www.npmjs.org/package/d3plus-common) [![Build Status](https://travis-ci.org/d3plus/d3plus-common.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-common) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-common.svg?style=flat)](https://david-dm.org/d3plus/d3plus-common) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/)
 
 Common functions and methods used across D3plus modules.
 
 ## Installing
 
-If you use NPM, run `npm install d3plus-common --save`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-common/releases/latest). The released bundle supports AMD, CommonJS, and vanilla environments. You can also load directly from [d3plus.org](https://d3plus.org):
+If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-common/releases/latest). You can also load d3plus-common as a standalone library or as part of [D3plus](https://github.com/d3plus/d3plus). ES modules, AMD, CommonJS, and vanilla environments are supported. In vanilla, a `d3plus` global is exported:
 
 ```html
-<script src="https://d3plus.org/js/d3plus-common.v0.7.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3plus-common@1"></script>
+<script>
+  console.log(d3plus);
+</script>
 ```
 
 
@@ -385,4 +388,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Tue, 14 Jul 2020 20:20:03 GMT</sub>
+###### <sub>Documentation generated on Tue, 02 Feb 2021 15:13:40 GMT</sub>
