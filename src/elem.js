@@ -12,7 +12,7 @@ import {default as attrize} from "./attrize";
     @param {Object} [params.enter = {}] A collection of key/value pairs that map to attributes to be given on enter.
     @param {Object} [params.exit = {}] A collection of key/value pairs that map to attributes to be given on exit.
     @param {D3Selection} [params.parent = d3.select("body")] The parent element for this new element to be appended to.
-    @param {D3Transition} [params.transition = d3.transition().duration(0)] The transition to use when animated the different life cycle stages.
+    @param {Number} [params.duration = 0] The duration for the d3 transition.
     @param {Object} [params.update = {}] A collection of key/value pairs that map to attributes to be given on update.
 */
 export default function(selector, p) {
@@ -22,14 +22,15 @@ export default function(selector, p) {
     condition: true,
     enter: {},
     exit: {},
+    duration: 0,
     parent: select("body"),
-    transition: transition().duration(0),
     update: {}
   }, p);
 
   const className = (/\.([^#]+)/g).exec(selector),
         id = (/#([^\.]+)/g).exec(selector),
-        tag = (/^([^.^#]+)/g).exec(selector)[1];
+        tag = (/^([^.^#]+)/g).exec(selector)[1],
+        t = transition().duration(p.duration);
 
   const elem = p.parent.selectAll(selector.includes(":") ? selector.split(":")[1] : selector)
     .data(p.condition ? [null] : []);
@@ -39,10 +40,10 @@ export default function(selector, p) {
   if (id) enter.attr("id", id[1]);
   if (className) enter.attr("class", className[1]);
 
-  elem.exit().transition(p.transition).call(attrize, p.exit).remove();
+  elem.exit().transition(t).call(attrize, p.exit).remove();
 
   const update = enter.merge(elem);
-  update.transition(p.transition).call(attrize, p.update);
+  update.transition(t).call(attrize, p.update);
 
   return update;
 
