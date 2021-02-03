@@ -265,7 +265,7 @@ This is a global function.
 | [params.enter] | <code>Object</code> | <code>{}</code> | A collection of key/value pairs that map to attributes to be given on enter. |
 | [params.exit] | <code>Object</code> | <code>{}</code> | A collection of key/value pairs that map to attributes to be given on exit. |
 | [params.parent] | <code>D3Selection</code> | <code>d3.select(&quot;body&quot;)</code> | The parent element for this new element to be appended to. |
-| [params.transition] | <code>D3Transition</code> | <code>d3.transition().duration(0)</code> | The transition to use when animated the different life cycle stages. |
+| [params.duration] | <code>Number</code> | <code>0</code> | The duration for the d3 transition. |
 | [params.update] | <code>Object</code> | <code>{}</code> | A collection of key/value pairs that map to attributes to be given on update. |
 
 
@@ -388,4 +388,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Tue, 02 Feb 2021 22:22:28 GMT</sub>
+###### <sub>Documentation generated on Wed, 03 Feb 2021 00:26:23 GMT</sub>
