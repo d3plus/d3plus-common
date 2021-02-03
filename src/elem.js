@@ -29,8 +29,8 @@ export default function(selector, p) {
 
   const className = (/\.([^#]+)/g).exec(selector),
         id = (/#([^\.]+)/g).exec(selector),
-        tag = (/^([^.^#]+)/g).exec(selector)[1],
-        t = transition().duration(p.duration);
+        t = transition().duration(p.duration),
+        tag = (/^([^.^#]+)/g).exec(selector)[1];
 
   const elem = p.parent.selectAll(selector.includes(":") ? selector.split(":")[1] : selector)
     .data(p.condition ? [null] : []);
