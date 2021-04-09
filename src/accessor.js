@@ -11,6 +11,6 @@ function(d) {
 }
 */
 export default function(key, def) {
-  if (def === void 0) return d => d[key];
-  return d => d[key] === void 0 ? def : d[key];
+  if (def === undefined) return d => d[key];
+  return d => d[key] === undefined ? def : d[key];
 }
