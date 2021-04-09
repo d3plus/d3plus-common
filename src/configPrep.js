@@ -53,7 +53,8 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
           newObj[key] = arrayEval(obj[key]);
         }
         else if (typeof obj[key] === "object") {
-          newObj[key] = {on: {}};
+          if (!newObj[key]) newObj[key] = {};
+          newObj[key].on = {};
           keyEval(newObj[key], obj[key]);
         }
         else newObj[key] = obj[key];
