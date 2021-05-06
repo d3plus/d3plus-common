@@ -14,6 +14,7 @@ test("assign", assert => {
   assert.equal(obj.deep.group, "B", "deep value overwrite");
   assert.equal(a.deep.group, "A", "non-destructive");
   assert.equal(a.deep.value, undefined, "non-additive");
+  assert.equal(assign(a, undefined, null, false, "string", 42), a, "filters out non-objects");
 
 });
 

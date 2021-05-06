@@ -26,6 +26,7 @@ function assign(...objects) {
   for (let i = 1; i < objects.length; i++) {
 
     const source = objects[i];
+    if (!isObject(source)) continue;
 
     Object.keys(source).forEach(prop => {
 
