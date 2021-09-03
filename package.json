@@ -2,7 +2,7 @@
   "name": "d3plus-common",
   "version": "1.0.4",
   "description": "Common functions and methods used across D3plus modules.",
-  "main": "build/d3plus-common.js",
+  "main": "build/d3plus-common.full.js",
   "jsnext:main": "es/index",
   "license": "MIT",
   "homepage": "https://d3plus.org",
