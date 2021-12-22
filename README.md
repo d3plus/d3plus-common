@@ -15,7 +15,6 @@ If you use NPM, `npm install d3plus-common`. Otherwise, download the [latest rel
 </script>
 ```
 
-
 ## API Reference
 
 ##### 
@@ -394,4 +393,4 @@ This is a global constant.
 
 
 
-###### <sub>Documentation generated on Fri, 03 Sep 2021 18:03:42 GMT</sub>
+###### <sub>Documentation generated on Wed, 22 Dec 2021 15:08:21 GMT</sub>
