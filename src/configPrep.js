@@ -10,6 +10,7 @@ export default function configPrep(config = this._shapeConfig, type = "shape", n
   const newConfig = {duration: this._duration, on: {}};
 
   const wrapFunction = func => (d, i, s, e) => {
+    if (!func) return func;
     let parent;
     while (d.__d3plus__) {
       if (parent) d.__d3plusParent__ = parent;
