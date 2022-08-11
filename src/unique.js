@@ -9,6 +9,14 @@ unique(["apple", "banana", "apple"]);
 ["apple", "banana"]
 */
 export default function(arr, accessor = d => d) {
-  const values = arr.map(accessor);
-  return arr.filter((d, i) => values.indexOf(accessor(d)) === i);
+
+  const values = arr
+    .map(accessor)
+    .map(d => d instanceof Date ? +d : d);
+
+  return arr.filter((obj, i) => {
+    const d = accessor(obj);
+    return values.indexOf(d instanceof Date ? +d : d) === i;
+  });
+
 }
