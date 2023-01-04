@@ -1,5 +1,4 @@
 import {merge, sum} from "d3-array";
-import {keys} from "d3-collection";
 import unique from "./unique";
 
 /**
@@ -17,7 +16,7 @@ merge([
 */
 function objectMerge(objects, aggs = {}) {
 
-  const availableKeys = unique(merge(objects.map(o => keys(o)))),
+  const availableKeys = unique(merge(objects.map(o => Object.keys(o)))),
         newObject = {};
 
   availableKeys.forEach(k => {
