@@ -38,7 +38,7 @@
     "windows-locale": "^1.1.3"
   },
   "devDependencies": {
-    "d3plus-dev": "^1.1.0"
+    "d3plus-dev": "^1.2.0"
   },
   "module": "es/index",
   "sideEffects": false,
