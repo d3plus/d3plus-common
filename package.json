@@ -3,7 +3,7 @@
   "version": "1.2.2",
   "description": "Common functions and methods used across D3plus modules.",
   "main": "build/d3plus-common.full.js",
-  "jsnext:main": "es/index",
+  "jsnext:main": "es/index.js",
   "license": "MIT",
   "homepage": "https://d3plus.org",
   "repository": {
@@ -39,7 +39,7 @@
   "devDependencies": {
     "d3plus-dev": "^1.2.7"
   },
-  "module": "es/index",
+  "module": "es/index.js",
   "sideEffects": false,
   "files": [
     "bin",
