@@ -1,8 +1,9 @@
-import {test} from "zora";
+import assert from "assert";
 import {default as attrize} from "../src/attrize.js";
 import {select} from "d3-selection";
+import it from "./jsdom.js";
 
-test("attrize", assert => {
+it("attrize", () => {
 
   const styles = {
     "width": "500px",
@@ -13,9 +14,7 @@ test("attrize", assert => {
 
   attrize(svg, styles);
 
-  assert.equal(svg.attr("width"), "500px", "Basic Attribute");
-  assert.equal(svg.attr("font-size"), "12px", "Hyphenated Attribute");
+  assert.strictEqual(svg.attr("width"), "500px", "Basic Attribute");
+  assert.strictEqual(svg.attr("font-size"), "12px", "Hyphenated Attribute");
 
 });
-
-export default test;

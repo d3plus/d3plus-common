@@ -1,5 +1,5 @@
 import {merge, sum} from "d3-array";
-import unique from "./unique";
+import unique from "./unique.js";
 
 /**
     @function merge

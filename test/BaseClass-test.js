@@ -1,11 +1,9 @@
-import {test} from "zora";
+import assert from "assert";
 import {default as BaseClass} from "../src/BaseClass.js";
 
-test("BaseClass", assert => {
+it("BaseClass", () => {
 
   const one = new BaseClass(), two = new BaseClass();
   assert.ok(one._uuid !== two._uuid, "_uuid");
 
 });
-
-export default test;

@@ -1,7 +1,7 @@
-import {test} from "zora";
+import assert from "assert";
 import {default as parseSides} from "../src/parseSides.js";
 
-test("parseSides", assert => {
+it("parseSides", () => {
 
   assert.deepEqual(parseSides(""), {top: 0, right: 0, bottom: 0, left: 0}, "No values");
   assert.deepEqual(parseSides("10"), {top: 10, right: 10, bottom: 10, left: 10}, "Single value");
@@ -13,5 +13,3 @@ test("parseSides", assert => {
   assert.deepEqual(parseSides(40), {top: 40, right: 40, bottom: 40, left: 40}, "number value");
 
 });
-
-export default test;

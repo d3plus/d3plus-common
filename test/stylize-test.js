@@ -1,8 +1,9 @@
-import {test} from "zora";
+import assert from "assert";
 import {default as stylize} from "../src/stylize.js";
 import {select} from "d3-selection";
+import it from "./jsdom.js";
 
-test("stylize", assert => {
+it("stylize", () => {
 
   const styles = {
     "color": "red",
@@ -13,9 +14,7 @@ test("stylize", assert => {
 
   stylize(div, styles);
 
-  assert.equal(div.style("color"), "red", "Basic Style");
-  assert.equal(div.style("font-size"), "12px", "Hyphenated Style");
+  assert.strictEqual(div.style("color"), "red", "Basic Style");
+  assert.strictEqual(div.style("font-size"), "12px", "Hyphenated Style");
 
 });
-
-export default test;

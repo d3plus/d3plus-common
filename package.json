@@ -27,17 +27,17 @@
     "docs": "d3plus-docs",
     "env": "d3plus-env",
     "release": "d3plus-release",
-    "test": "d3plus-test"
+    "test": "eslint src test && mocha 'test/**/*-test.js'"
   },
   "dependencies": {
-    "d3-array": "^3.2.1",
+    "d3-array": "^3.2.2",
     "d3-selection": "^3.0.0",
     "d3-transition": "^3.0.1",
     "iso639-codes": "^1.0.1",
     "windows-locale": "^1.1.3"
   },
   "devDependencies": {
-    "d3plus-dev": "^1.2.2"
+    "d3plus-dev": "^1.2.7"
   },
   "module": "es/index",
   "sideEffects": false,
@@ -47,5 +47,6 @@
     "build/d3plus-common.js.map",
     "build/d3plus-common.min.js",
     "es"
-  ]
+  ],
+  "type": "module"
 }

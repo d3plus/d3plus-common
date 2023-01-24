@@ -1,10 +1,8 @@
-import {test} from "zora";
+import assert from "assert";
 import {default as uuid} from "../src/uuid.js";
 
-test("uuid", assert => {
+it("uuid", () => {
 
   assert.notEqual(uuid(), uuid(), "Unique Values");
 
 });
-
-export default test;

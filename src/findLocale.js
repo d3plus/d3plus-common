@@ -1,5 +1,5 @@
-import lcid from "windows-locale";
-import iso from "iso639-codes";
+import lcid from "./locales/lookup.js";
+import iso from "./locales/iso-codes.js";
 
 const locales = [];
 const isoKeys = Object.keys(iso);

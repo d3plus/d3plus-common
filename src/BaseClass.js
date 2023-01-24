@@ -1,10 +1,10 @@
-import assign from "./assign";
-import findLocale from "./findLocale";
-import isObject from "./isObject";
-import uuid from "./uuid";
-import RESET from "./RESET";
+import assign from "./assign.js";
+import findLocale from "./findLocale.js";
+import isObject from "./isObject.js";
+import uuid from "./uuid.js";
+import RESET from "./RESET.js";
 
-import dictionaries from "./locales/index";
+import dictionaries from "./locales/index.js";
 
 /**
     @desc Recursive function that resets nested Object configs.

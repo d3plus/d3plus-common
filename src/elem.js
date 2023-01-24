@@ -1,7 +1,7 @@
 import {select} from "d3-selection";
 import {transition} from "d3-transition";
 
-import {default as attrize} from "./attrize";
+import {default as attrize} from "./attrize.js";
 
 /**
     @function elem
@@ -28,7 +28,7 @@ export default function(selector, p) {
   }, p);
 
   const className = (/\.([^#]+)/g).exec(selector),
-        id = (/#([^\.]+)/g).exec(selector),
+        id = (/#([^.]+)/g).exec(selector),
         t = transition().duration(p.duration),
         tag = (/^([^.^#]+)/g).exec(selector)[1];
 

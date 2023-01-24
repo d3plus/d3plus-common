@@ -1,5 +1,5 @@
-import esES from "./es-ES";
-import ptBR from "./pt-BR";
+import esES from "./es-ES.js";
+import ptBR from "./pt-BR.js";
 
 export default {
   "es-ES": esES,

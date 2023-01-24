@@ -1,4 +1,4 @@
-import {default as isObject} from "./isObject";
+import {default as isObject} from "./isObject.js";
 
 /**
     @function validObject
@@ -33,7 +33,7 @@ function assign(...objects) {
       const value = source[prop];
 
       if (isObject(value) && validObject(value)) {
-        if (target.hasOwnProperty(prop) && isObject(target[prop])) target[prop] = assign({}, target[prop], value);
+        if (Object.prototype.hasOwnProperty.call(target, prop) && isObject(target[prop])) target[prop] = assign({}, target[prop], value);
         else target[prop] = assign({}, value);
       }
       else if (Array.isArray(value)) target[prop] = value.slice();
