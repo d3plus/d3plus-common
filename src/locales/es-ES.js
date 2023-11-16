@@ -8,6 +8,7 @@ export default {
   "Click to Show All": "Clic para Mostrar Todo",
   "Download": "Descargar",
   "Loading Visualization": "Cargando Visualización",
+  "more": "más",
   "No Data Available": "Datos No Disponibles",
   "Powered by D3plus": "Funciona con D3plus",
   "Share": "Porcentaje",

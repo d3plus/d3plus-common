@@ -9,6 +9,7 @@ export default {
     "Download": "تحميل",
     "Loading Visualization": "جاري تحميل التصوير البياني",
     "No Data Available": "لا تتوفر بيانات",
+    "more": "أخرى",
     "Powered by D3plus": "مدعوم بواسطة D3plus",
     "Share": "مشاركة",
     "Shift+Click to Hide": "Shift+انقر للإخفاء",
