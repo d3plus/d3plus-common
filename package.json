@@ -32,7 +32,7 @@
     "test": "eslint src test && mocha 'test/**/*-test.js'"
   },
   "dependencies": {
-    "d3-array": "^3.2.2",
+    "d3-array": "^3.2.4",
     "d3-selection": "^3.0.0",
     "d3-transition": "^3.0.1",
     "iso639-codes": "^1.0.1",
