@@ -39,7 +39,7 @@
     "windows-locale": "^1.1.3"
   },
   "devDependencies": {
-    "d3plus-dev": "^1.2.7"
+    "d3plus-dev": "^1.2.9"
   },
   "sideEffects": false,
   "files": [
