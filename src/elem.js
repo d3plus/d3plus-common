@@ -40,10 +40,12 @@ export default function(selector, p) {
   if (id) enter.attr("id", id[1]);
   if (className) enter.attr("class", className[1]);
 
-  elem.exit().transition(t).call(attrize, p.exit).remove();
+  if (p.duration) elem.exit().transition(t).call(attrize, p.exit).remove();
+  else elem.exit().call(attrize, p.exit).remove();
 
   const update = enter.merge(elem);
-  update.transition(t).call(attrize, p.update);
+  if (p.duration) update.transition(t).call(attrize, p.update);
+  else update.call(attrize, p.update);
 
   return update;
 
