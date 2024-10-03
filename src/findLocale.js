@@ -27,7 +27,8 @@ const defaultLocales = {
   ko: "ko-KR",
   pa: "pa-IN",
   pt: "pt-BR",
-  sv: "sv-SE"
+  sv: "sv-SE",
+  zh: "zh-CN",
 };
 
 /**
